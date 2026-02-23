@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voxera OS — Docs & Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+</head>
+<body data-page="docs">
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header glass">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-orb"></span><span>Voxera <em>OS</em></span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Docs</a>
+        <a href="roadmap.html">Roadmap</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main container">
+<section class="page-hero reveal">
+  <p class="eyebrow">Docs Highlights</p>
+  <h1>Operational contracts, sandbox model, and release guardrails</h1>
+  <p class="lede">A concise documentation view of the Alpha v0.1.4 baseline, focusing on queue contracts, approvals, sandbox execution, and validation expectations before pushing changes.</p>
+</section>
+
+<section class="section reveal">
+  <div class="grid two">
+    <article class="card glass">
+      <h2>Queue intake contract</h2>
+      <ul class="feature-list compact">
+        <li>Primary jobs: <code>notes/queue/inbox/*.json</code> only</li>
+        <li>Legacy root drops auto-relocate to inbox with <code>queue_job_autorelocate</code></li>
+        <li>Mis-dropped pending primary jobs auto-relocate (never silently stuck)</li>
+        <li>Ready files only: daemon ignores dotfiles, <code>*.tmp</code>, <code>*.partial</code></li>
+      </ul>
+    </article>
+    <article class="card glass">
+      <h2>Approval lifecycle</h2>
+      <ul class="feature-list compact">
+        <li>Approval-required jobs move to <code>pending/</code> (not failed)</li>
+        <li>Artifacts in <code>pending/approvals/*.approval.json</code> include policy reason + scope metadata</li>
+        <li>CLI resolves approvals: list / approve / approve --always / deny</li>
+        <li>Malformed approval artifact is surfaced as unparseable row and audited</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-head"><p class="eyebrow">Sandbox</p><h2>Rootless Podman execution (MVP)</h2></div>
+  <div class="grid two">
+    <article class="card glass">
+      <h3>Install on Ubuntu 24.04</h3>
+      <div class="code-block nested"><pre><code>sudo apt update
+sudo apt install -y podman uidmap slirp4netns fuse-overlayfs
+podman info --debug | head
+</code></pre></div>
+    </article>
+    <article class="card glass">
+      <h3>Security defaults</h3>
+      <ul class="feature-list compact">
+        <li>Default <code>--network=none</code> unless explicitly requested + approved</li>
+        <li>Read-only root filesystem</li>
+        <li>Writable mount limited to <code>~/.voxera/workspace/&lt;job_id&gt;</code> as <code>/work</code></li>
+        <li>Artifacts stored in <code>~/.voxera/artifacts/&lt;job_id&gt;/</code></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-head"><p class="eyebrow">Validation</p><h2>Before pushing or merging</h2></div>
+  <div class="grid two">
+    <article class="card glass">
+      <h3>Required for PR merge</h3>
+      <div class="code-block nested"><pre><code>make merge-readiness-check</code></pre></div>
+      <p>Runs quality checks + release consistency checks and aligns with the pre-push hook installed by <code>make dev</code>.</p>
+    </article>
+    <article class="card glass">
+      <h3>Broader local validation</h3>
+      <div class="code-block nested"><pre><code>make full-validation-check
+# alias
+make premerge</code></pre></div>
+      <p>Includes merge-readiness plus failed-sidecar guardrails, full pytest, and E2E smoke.</p>
+    </article>
+  </div>
+</section>
+</main>
+  <footer class="site-footer container">
+    <div><strong>Voxera OS</strong><p>Alpha v0.1.4</p></div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="quickstart.html">Quick Start</a><a href="docs.html">Docs</a></div>
+  </footer>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

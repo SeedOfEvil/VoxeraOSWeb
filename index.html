@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Voxera OS Alpha v0.1.4 — Voice-first AI Control Plane. Stability + UX baseline with queue daemon, approvals, missions, panel insights, and pluggable brain providers." />
+  <title>Voxera OS — Alpha v0.1.4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+</head>
+<body data-page="home">
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header glass">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Voxera OS home">
+        <span class="brand-orb"></span>
+        <span>Voxera <em>OS</em></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Docs</a>
+        <a href="roadmap.html">Roadmap</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Alpha v0.1.4 — Stability + UX Baseline</p>
+        <h1>Voice-first AI control plane<br><span class="gradient-text">built for trustworthy daily use</span></h1>
+        <p class="lede">Voxera OS is an AI-controlled OS experience layered on top of Linux. It combines typed setup, cloud-planned missions, queue-based approvals, panel insights, systemd user services, and pluggable brain providers into a reliable operator workflow.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="quickstart.html">Start Quick Setup</a>
+          <a class="btn btn-ghost" href="features.html">Explore Features</a>
+        </div>
+        <div class="pill-row" aria-label="Project naming summary">
+          <span class="pill">OS: Voxera OS</span>
+          <span class="pill">Persona: Vera</span>
+          <span class="pill">CLI: <code>voxera</code></span>
+          <span class="pill muted">Wake word planned: “Hey Voxera”</span>
+        </div>
+      </div>
+      <div class="hero-panel glass reveal delay-1" aria-label="Voxera command preview">
+        <div class="terminal-head">
+          <span></span><span></span><span></span>
+          <strong>voxera-alpha-demo</strong>
+        </div>
+        <pre><code>$ voxera --version
+voxera 0.1.4
+
+$ voxera queue status
+queue: healthy
+inbox: 1 | pending: 0 | approvals: 0 | done: 8 | failed: 0
+
+$ voxera inbox add "Write a daily check-in note with priorities and blockers"
+queued → notes/queue/inbox/job-1734.json
+
+$ voxera daemon --once
+processed: 1 job
+approval required: no
+moved → done/
+</code></pre>
+      </div>
+    </section>
+
+    <section class="stats container reveal">
+      <div class="grid stats-grid">
+        <article class="card glass"><h3>Cloud Mission Planner</h3><p>Plan goals with local policy and approvals preserved.</p></article>
+        <article class="card glass"><h3>Queue + Approvals</h3><p>Operator-friendly inbox, pending approvals, retries, pause/resume.</p></article>
+        <article class="card glass"><h3>Artifacts + Audit</h3><p>Per-job plans, logs, action timelines, and failure sidecars.</p></article>
+        <article class="card glass"><h3>Service Lifecycle</h3><p>Systemd user units with update-safe restart workflows.</p></article>
+      </div>
+    </section>
+
+    <section class="container section split">
+      <div class="reveal">
+        <p class="eyebrow">What works now</p>
+        <h2>Daily-driver baseline features</h2>
+        <ul class="feature-list">
+          <li>Cloud mission planner via <code>voxera missions plan "&lt;goal&gt;"</code> with safety gates intact</li>
+          <li>Deterministic simple-write planning for note/file goals using a single <code>files.write_text</code> step</li>
+          <li>Queue daemon + approval inbox under <code>pending/approvals/*.approval.json</code></li>
+          <li>Queue status UX + panel insights for operators</li>
+          <li>DEV-only auto-approve for strict allowlist (<code>system.settings</code>)</li>
+          <li>Human-friendly inbox commands and queue lifecycle actions</li>
+          <li>Update tooling and systemd user service management</li>
+        </ul>
+      </div>
+      <div class="reveal delay-1">
+        <div class="card glass highlight-card">
+          <h3>Architecture Layers</h3>
+          <ol>
+            <li><strong>Substrate OS</strong> — Ubuntu/Fedora/etc. (drivers, filesystem, networking)</li>
+            <li><strong>AI Control Plane</strong> — intent routing, planning, memory, tools, policy</li>
+            <li><strong>Experience Layer</strong> — voice shell + confirmation panel, later richer UI modes</li>
+          </ol>
+          <a class="inline-link" href="docs.html">Read docs sections →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Why it feels different</p>
+        <h2>Trust-first operator experience</h2>
+      </div>
+      <div class="grid three">
+        <article class="card glass glow-card">
+          <h3>No silent risky changes</h3>
+          <p>Risky actions (network/install/credentials) remain approval-gated instead of disappearing into agent magic.</p>
+        </article>
+        <article class="card glass glow-card">
+          <h3>Queue intake contract</h3>
+          <p>Only <code>notes/queue/inbox/*.json</code> is supported for primary job drops. Legacy drops are auto-relocated and audited.</p>
+        </article>
+        <article class="card glass glow-card">
+          <h3>Artifact-first debugging</h3>
+          <p>Done, pending, and failed jobs all emit consistent artifact bundles for timeline + stdout/stderr inspection.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section reveal">
+      <div class="cta-band glass">
+        <div>
+          <p class="eyebrow">Start with Alpha</p>
+          <h2>Bootstrap, validate, and run your first queue-driven mission</h2>
+          <p>Use the guided quick start pages for both the Alpha baseline and a dev VM flow with <code>voxera setup</code>, provider config, <code>doctor</code> checks, and queue initialization.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="quickstart.html#alpha">Alpha Quick Start</a>
+          <a class="btn btn-ghost" href="quickstart.html#dev-vm">Dev VM Flow</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <div>
+      <strong>Voxera OS</strong>
+      <p>Alpha v0.1.4 — Voice-first AI Control Plane (Stability + UX Baseline)</p>
+    </div>
+    <div class="footer-links">
+      <a href="features.html">Features</a>
+      <a href="quickstart.html">Quick Start</a>
+      <a href="docs.html">Docs</a>
+      <a href="roadmap.html">Roadmap</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

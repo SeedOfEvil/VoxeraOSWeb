@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voxera OS — Quick Start</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+</head>
+<body data-page="quickstart">
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header glass">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-orb"></span><span>Voxera <em>OS</em></span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Docs</a>
+        <a href="roadmap.html">Roadmap</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main container">
+<section class="page-hero reveal">
+  <p class="eyebrow">Quick Start</p>
+  <h1>Get Voxera OS Alpha v0.1.4 running</h1>
+  <p class="lede">Choose the Alpha baseline flow or the full dev VM setup. Commands below are copyable and organized for practical operator use.</p>
+</section>
+
+<section id="alpha" class="section reveal">
+  <div class="section-head"><p class="eyebrow">Path A</p><h2>Alpha baseline quick start</h2></div>
+  <div class="code-block glass">
+<pre><code>python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -e ".[dev]"
+
+make update
+make services-install
+
+voxera --version
+voxera queue status
+voxera inbox add "Write a daily check-in note with priorities and blockers"
+voxera daemon --once
+voxera queue approvals list
+# approve / deny / retry / cancel / pause / resume as needed
+</code></pre>
+    <button class="copy-btn" data-copy="python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -e ".[dev]"
+
+make update
+make services-install
+
+voxera --version
+voxera queue status
+voxera inbox add "Write a daily check-in note with priorities and blockers"
+voxera daemon --once
+voxera queue approvals list">Copy</button>
+  </div>
+</section>
+
+<section id="dev-vm" class="section reveal">
+  <div class="section-head"><p class="eyebrow">Path B</p><h2>Dev VM setup (typed first-run)</h2></div>
+  <div class="grid two">
+    <article class="card glass">
+      <h3>1) Install + run setup</h3>
+      <div class="code-block nested">
+<pre><code>python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -e ".[dev]"
+
+voxera setup
+</code></pre>
+      </div>
+      <p>Writes config to <code>~/.config/voxera/config.yml</code>; secrets go to keyring when possible (or a 0600 fallback file).</p>
+    </article>
+    <article class="card glass">
+      <h3>2) Validate provider endpoints</h3>
+      <div class="code-block nested">
+<pre><code>voxera doctor
+voxera doctor --self-test
+</code></pre>
+      </div>
+      <p>OpenRouter setup is supported out of the box with base URL, headers, and multi-tier brain roles (primary/fast/reasoning/fallback).</p>
+    </article>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-head"><p class="eyebrow">Queue Bootstrap</p><h2>Required folders and first job</h2></div>
+  <div class="code-block glass">
+<pre><code># Preferred one-time bootstrap
+voxera queue init
+
+# Equivalent manual fallback
+mkdir -p ~/VoxeraOS/notes/queue/{inbox,pending/approvals,done,failed,artifacts,_archive}
+
+# First queue job file
+cat &gt; ~/VoxeraOS/notes/queue/inbox/job-1.json &lt;&lt;'JSON'
+{"version":"1","goal":"run a quick system check","mission_id":"system_check"}
+JSON
+
+systemctl --user restart voxera-daemon.service
+voxera queue status
+voxera queue approvals list
+</code></pre>
+    <button class="copy-btn" data-copy="voxera queue init
+
+cat > ~/VoxeraOS/notes/queue/inbox/job-1.json <<'JSON'
+{"version":"1","goal":"run a quick system check","mission_id":"system_check"}
+JSON
+
+systemctl --user restart voxera-daemon.service
+voxera queue status
+voxera queue approvals list">Copy</button>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-head"><p class="eyebrow">Operator Tip</p><h2>Atomic producer write best practice</h2></div>
+  <div class="code-block glass">
+<pre><code>queue_dir=~/VoxeraOS/notes/queue
+inbox_dir="$queue_dir/inbox"
+mkdir -p "$inbox_dir"
+job_id=job-$(date +%s)
+tmp_path="$inbox_dir/.${job_id}.tmp"
+final_path="$inbox_dir/${job_id}.json"
+printf '{"goal":"run a quick system check"}
+' &gt; "$tmp_path"
+mv "$tmp_path" "$final_path"
+</code></pre>
+  </div>
+</section>
+</main>
+  <footer class="site-footer container">
+    <div><strong>Voxera OS</strong><p>Alpha v0.1.4</p></div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="quickstart.html">Quick Start</a><a href="docs.html">Docs</a></div>
+  </footer>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
