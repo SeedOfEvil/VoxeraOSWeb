@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voxera OS — Docs & Operations</title>
+  <meta name="description" content="Voxera OS Docs — Queue contracts, approval lifecycle, sandbox execution model, and validation guardrails for Alpha v0.1.5." />
+  <title>Voxera OS — Docs &amp; Operations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 </head>
 <body data-page="docs">
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
+
   <header class="site-header glass">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html"><span class="brand-orb"></span><span>Voxera <em>OS</em></span></a>
+      <a class="brand" href="index.html" aria-label="Voxera OS home">
+        <span class="brand-orb"></span>
+        <span>Voxera <em>OS</em></span>
+      </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
@@ -24,82 +28,205 @@
         <a href="docs.html">Docs</a>
         <a href="roadmap.html">Roadmap</a>
       </nav>
+      <a class="btn-nav-cta" href="index.html#waitlist">Join Waitlist</a>
     </div>
   </header>
+
   <main class="page-main container">
-<section class="page-hero reveal">
-  <p class="eyebrow">Docs Highlights</p>
-  <h1>Operational contracts, sandbox model, and release guardrails</h1>
-  <p class="lede">A concise documentation view of the Alpha v0.1.4 baseline, focusing on queue contracts, approvals, sandbox execution, and validation expectations before pushing changes.</p>
-</section>
 
-<section class="section reveal">
-  <div class="grid two">
-    <article class="card glass">
-      <h2>Queue intake contract</h2>
-      <ul class="feature-list compact">
-        <li>Primary jobs: <code>notes/queue/inbox/*.json</code> only</li>
-        <li>Legacy root drops auto-relocate to inbox with <code>queue_job_autorelocate</code></li>
-        <li>Mis-dropped pending primary jobs auto-relocate (never silently stuck)</li>
-        <li>Ready files only: daemon ignores dotfiles, <code>*.tmp</code>, <code>*.partial</code></li>
-      </ul>
-    </article>
-    <article class="card glass">
-      <h2>Approval lifecycle</h2>
-      <ul class="feature-list compact">
-        <li>Approval-required jobs move to <code>pending/</code> (not failed)</li>
-        <li>Artifacts in <code>pending/approvals/*.approval.json</code> include policy reason + scope metadata</li>
-        <li>CLI resolves approvals: list / approve / approve --always / deny</li>
-        <li>Malformed approval artifact is surfaced as unparseable row and audited</li>
-      </ul>
-    </article>
-  </div>
-</section>
+    <section class="page-hero reveal">
+      <p class="eyebrow">Docs · Alpha v0.1.5</p>
+      <h1>Operational contracts, sandbox model, and release guardrails</h1>
+      <p class="lede">A focused documentation view of the Alpha v0.1.5 baseline — covering queue contracts, approval lifecycle, sandbox execution, and validation expectations before pushing changes.</p>
+    </section>
 
-<section class="section reveal">
-  <div class="section-head"><p class="eyebrow">Sandbox</p><h2>Rootless Podman execution (MVP)</h2></div>
-  <div class="grid two">
-    <article class="card glass">
-      <h3>Install on Ubuntu 24.04</h3>
-      <div class="code-block nested"><pre><code>sudo apt update
+    <!-- Queue contracts -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Queue contracts</p>
+        <h2>Intake, approvals, and lifecycle</h2>
+      </div>
+      <div class="grid two stagger-children">
+        <article class="card reveal">
+          <h2>Queue intake contract</h2>
+          <ul class="feature-list compact">
+            <li>Primary jobs: <code>notes/queue/inbox/*.json</code> — the only supported drop location.</li>
+            <li>Legacy root drops are auto-relocated to inbox with a <code>queue_job_autorelocate</code> audit event.</li>
+            <li>Mis-dropped pending primary jobs are also auto-relocated — never silently stuck.</li>
+            <li>Daemon ignores dotfiles, <code>*.tmp</code>, and <code>*.partial</code> artifacts.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h2>Approval lifecycle</h2>
+          <ul class="feature-list compact">
+            <li>Approval-required jobs move to <code>pending/</code> (never to failed).</li>
+            <li>Approval artifacts in <code>pending/approvals/*.approval.json</code> include policy reason and scope metadata.</li>
+            <li>CLI: <code>list</code> / <code>approve</code> / <code>approve --always</code> / <code>deny</code>.</li>
+            <li>Malformed approval artifacts are surfaced as "(unparseable)" rows and fully audited.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h2>Failed-job sidecar contract</h2>
+          <ul class="feature-list compact">
+            <li>Sidecar path: <code>failed/&lt;job_stem&gt;.error.json</code>.</li>
+            <li>Required fields: <code>schema_version</code> (1), <code>job</code>, <code>error</code>, <code>timestamp_ms</code>.</li>
+            <li>Invalid sidecars are ignored in snapshots and logged as <code>queue_failed_sidecar_invalid</code>.</li>
+            <li>Schema evolution: reader uses an explicit supported-version allowlist; unknown versions are rejected.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h2>Queue health &amp; observability</h2>
+          <ul class="feature-list compact">
+            <li>Health counters persisted in <code>notes/queue/health.json</code> (shared by daemon and panel).</li>
+            <li>Brain fallback reasons classified: <code>TIMEOUT</code>, <code>AUTH</code>, <code>RATE_LIMIT</code>, <code>MALFORMED</code>, <code>NETWORK</code>, <code>UNKNOWN</code>.</li>
+            <li><code>voxera queue health</code> shows paused flag, lock status, counters, last fallback, and last error summary.</li>
+            <li><code>voxera doctor --quick</code> runs fast local checks with no model calls.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sandbox -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Sandbox</p>
+        <h2>Rootless Podman execution</h2>
+      </div>
+      <div class="grid two stagger-children">
+        <article class="card reveal">
+          <h3>Install on Ubuntu 24.04</h3>
+          <div class="code-block nested">
+            <pre><code>sudo apt update
 sudo apt install -y podman uidmap slirp4netns fuse-overlayfs
-podman info --debug | head
-</code></pre></div>
-    </article>
-    <article class="card glass">
-      <h3>Security defaults</h3>
-      <ul class="feature-list compact">
-        <li>Default <code>--network=none</code> unless explicitly requested + approved</li>
-        <li>Read-only root filesystem</li>
-        <li>Writable mount limited to <code>~/.voxera/workspace/&lt;job_id&gt;</code> as <code>/work</code></li>
-        <li>Artifacts stored in <code>~/.voxera/artifacts/&lt;job_id&gt;/</code></li>
-      </ul>
-    </article>
-  </div>
-</section>
+podman info --debug | head</code></pre>
+          </div>
+        </article>
+        <article class="card reveal">
+          <h3>Security defaults</h3>
+          <ul class="feature-list compact">
+            <li>Default <code>--network=none</code> unless explicitly requested and approved.</li>
+            <li>Read-only root filesystem with <code>--read-only</code>.</li>
+            <li>Writable mount limited to <code>~/.voxera/workspace/&lt;job_id&gt;</code> as <code>/work</code>.</li>
+            <li>Artifacts stored in <code>~/.voxera/artifacts/&lt;job_id&gt;/</code> (stdout, stderr, runner.json, command.txt).</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-<section class="section reveal">
-  <div class="section-head"><p class="eyebrow">Validation</p><h2>Before pushing or merging</h2></div>
-  <div class="grid two">
-    <article class="card glass">
-      <h3>Required for PR merge</h3>
-      <div class="code-block nested"><pre><code>make merge-readiness-check</code></pre></div>
-      <p>Runs quality checks + release consistency checks and aligns with the pre-push hook installed by <code>make dev</code>.</p>
-    </article>
-    <article class="card glass">
-      <h3>Broader local validation</h3>
-      <div class="code-block nested"><pre><code>make full-validation-check
+    <!-- Artifact pruning -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">New in v0.1.5</p>
+        <h2>Artifact pruning &amp; queue hygiene</h2>
+      </div>
+      <div class="grid two stagger-children">
+        <article class="card reveal">
+          <h3>voxera artifacts prune</h3>
+          <p style="margin-bottom:.75rem">Deletes stale entries from <code>notes/queue/artifacts/</code>. Always dry-run unless <code>--yes</code> is passed.</p>
+          <div class="code-block nested">
+            <pre><code># Preview only (safe, no changes)
+voxera artifacts prune --max-age-days 30
+
+# Delete entries older than 30 days
+voxera artifacts prune --max-age-days 30 --yes
+
+# Keep newest 50, prune the rest
+voxera artifacts prune --max-count 50 --yes
+
+# Machine-readable JSON summary
+voxera artifacts prune --max-age-days 30 --json</code></pre>
+          </div>
+        </article>
+        <article class="card reveal">
+          <h3>voxera queue prune &amp; reconcile</h3>
+          <p style="margin-bottom:.75rem">Remove stale job files from terminal buckets (done, failed, canceled). <code>reconcile</code> is report-only and never modifies state.</p>
+          <div class="code-block nested">
+            <pre><code># Prune terminal job buckets
+voxera queue prune --max-age-days 30 --yes
+
+# Report-only hygiene diagnostic
+voxera queue reconcile
+voxera queue reconcile --json</code></pre>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Validation -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Validation</p>
+        <h2>Before pushing or merging</h2>
+      </div>
+      <div class="grid two stagger-children">
+        <article class="card reveal">
+          <h3>Required for PR merge</h3>
+          <div class="code-block nested">
+            <pre><code>make merge-readiness-check</code></pre>
+          </div>
+          <p>Runs formatting/lint checks, Mypy ratchet, and release consistency checks. Aligns with the pre-push hook installed by <code>make dev</code>.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Broader local validation</h3>
+          <div class="code-block nested">
+            <pre><code>make full-validation-check
 # alias
-make premerge</code></pre></div>
-      <p>Includes merge-readiness plus failed-sidecar guardrails, full pytest, and E2E smoke.</p>
-    </article>
-  </div>
-</section>
-</main>
-  <footer class="site-footer container">
-    <div><strong>Voxera OS</strong><p>Alpha v0.1.4</p></div>
-    <div class="footer-links"><a href="index.html">Home</a><a href="quickstart.html">Quick Start</a><a href="docs.html">Docs</a></div>
+make premerge</code></pre>
+          </div>
+          <p>Includes merge-readiness plus failed-sidecar guardrails, full pytest suite, and E2E smoke checks.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Ops panel -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Operator console</p>
+        <h2>Panel jobs view &amp; incident bundles</h2>
+      </div>
+      <div class="grid two stagger-children">
+        <article class="card reveal">
+          <h3>Jobs console</h3>
+          <div class="code-block nested">
+            <pre><code>voxera panel
+# open in browser:
+http://127.0.0.1:8844/jobs?bucket=all&n=80</code></pre>
+          </div>
+          <p>Filter by bucket (all, inbox, pending, approvals, done, failed, canceled), substring search, and per-job artifact/timeline view.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Incident bundles</h3>
+          <div class="code-block nested">
+            <pre><code>voxera ops bundle system
+voxera ops bundle job job-123.json
+
+# combine into one handoff folder
+voxera ops bundle system \
+  --dir notes/queue/_archive/INCIDENT-123
+voxera ops bundle job job-123.json \
+  --dir notes/queue/_archive/INCIDENT-123</code></pre>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <strong>Voxera OS</strong>
+        <p>Alpha v0.1.5 · AI Control Plane</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="features.html">Features</a>
+        <a href="roadmap.html">Roadmap</a>
+      </div>
+    </div>
   </footer>
+
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
