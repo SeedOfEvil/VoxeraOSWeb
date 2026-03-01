@@ -11,8 +11,7 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 </head>
-<body data-page="home" class="home-v2">
-  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<body data-page="home">
 
   <header class="site-header glass">
     <div class="container nav-wrap">
@@ -26,36 +25,32 @@
         <a href="features.html">Features</a>
         <a href="quickstart.html">Quick Start</a>
         <a href="docs.html">Docs</a>
+        <a href="roadmap.html">Roadmap</a>
       </nav>
-      <a class="btn btn-nav-cta" href="#waitlist">Join Waitlist</a>
+      <a class="btn-nav-cta" href="#waitlist">Join Waitlist</a>
     </div>
   </header>
 
   <main>
 
-    <!-- ─── Hero ─────────────────────────────────────────────────── -->
+    <!-- ─── Hero ──────────────────────────────────────────────────────── -->
     <section class="v2-hero container">
-
       <div class="v2-invite-badge reveal">
         <span class="pulse-dot"></span>
         Invite only · Alpha v0.1.5
       </div>
-
       <h1 class="v2-headline reveal delay-1">
         The AI control plane<br>
         <span class="gradient-text">your Linux deserves.</span>
       </h1>
-
       <p class="v2-lede reveal delay-2">
         Voxera OS is a production-ready framework that sits between you and your AI.<br class="br-lg">
         Every action is routed, approved, audited, and contained — before it touches your system.
       </p>
-
       <div class="v2-cta-row reveal delay-3">
         <a class="btn btn-primary btn-lg" href="#waitlist">Request Early Access</a>
         <a class="btn btn-ghost btn-lg" href="features.html">Explore the Framework</a>
       </div>
-
       <div class="v2-name-row reveal delay-4">
         <span class="v2-pill">OS: Voxera OS</span>
         <span class="v2-pill">Core AI: Vera</span>
@@ -64,9 +59,9 @@
       </div>
     </section>
 
-    <!-- ─── Terminal ───────────────────────────────────────────────── -->
+    <!-- ─── Terminal ──────────────────────────────────────────────────── -->
     <section class="container v2-terminal-section reveal">
-      <div class="v2-terminal glass">
+      <div class="v2-terminal">
         <div class="v2-terminal-bar">
           <span class="dot-r"></span>
           <span class="dot-y"></span>
@@ -77,54 +72,53 @@
 voxera 0.1.5
 
 <span class="tc-dim">$</span> voxera queue status
-queue: <span class="tc-green">healthy</span>  |  inbox: 1  |  pending: 0  |  approvals: 0  |  done: 12  |  failed: 0
+queue: <span class="tc-green">healthy</span>  ·  inbox: 1  ·  pending: 0  ·  approvals: 0  ·  done: 12  ·  failed: 0
 
 <span class="tc-dim">$</span> voxera inbox add "Write a daily check-in note with priorities and blockers"
 queued → <span class="tc-blue">notes/queue/inbox/job-1748.json</span>
 
 <span class="tc-dim">$</span> voxera daemon --once
-processed: 1 job  |  approval required: no  |  moved → done/
+processed: 1 job  ·  approval required: no  ·  moved → done/
 
 <span class="tc-dim">$</span> voxera artifacts prune --max-age-days 30 --yes
-pruned: 4 artifacts  |  freed: 2.1 MB</code></pre>
+pruned: 4 artifacts  ·  freed: 2.1 MB</code></pre>
       </div>
     </section>
 
-    <!-- ─── Six pillars ────────────────────────────────────────────── -->
-    <section class="container v2-section reveal">
-      <div class="v2-section-intro">
+    <!-- ─── Six pillars ───────────────────────────────────────────────── -->
+    <section class="container v2-section">
+      <div class="v2-section-intro reveal">
         <p class="v2-label">Production-ready framework</p>
         <h2 class="v2-section-title">Control. Audit. Trust.</h2>
         <p class="v2-section-sub">Not another AI wrapper. Voxera OS is an operator-grade control plane built around the belief that AI should ask, not assume.</p>
       </div>
-
-      <div class="v2-pillars">
-        <article class="v2-pillar glass">
+      <div class="v2-pillars stagger-children">
+        <article class="v2-pillar reveal">
           <div class="v2-pillar-icon icon-lock"></div>
           <h3>Approval-gated by default</h3>
-          <p>Risky actions — network calls, installs, credentials — require explicit human sign-off. Policy decides allow, ask, or deny.</p>
+          <p>Risky actions — network calls, installs, credentials — require explicit human sign-off. Policy decides allow, ask, or deny at runtime.</p>
         </article>
-        <article class="v2-pillar glass">
+        <article class="v2-pillar reveal">
           <div class="v2-pillar-icon icon-log"></div>
           <h3>Complete audit trail</h3>
           <p>Every job emits a structured bundle: mission plan, action timeline, stdout, stderr, and schema-versioned failure sidecars.</p>
         </article>
-        <article class="v2-pillar glass">
+        <article class="v2-pillar reveal">
           <div class="v2-pillar-icon icon-box"></div>
           <h3>Sandboxed execution</h3>
           <p>Rootless Podman with read-only root and network-off by default. Each job gets an isolated workspace. No cross-job bleed.</p>
         </article>
-        <article class="v2-pillar glass">
+        <article class="v2-pillar reveal">
           <div class="v2-pillar-icon icon-brain"></div>
           <h3>Pluggable AI backends</h3>
           <p>Gemini, OpenAI-compatible, OpenRouter, and local Ollama — with tiered fallback and classified failure reason tracking.</p>
         </article>
-        <article class="v2-pillar glass">
+        <article class="v2-pillar reveal">
           <div class="v2-pillar-icon icon-queue"></div>
           <h3>Reliable queue engine</h3>
           <p>Daemon-driven inbox, approval inbox, cancel/retry/pause — with atomic job writes and lock-safe stale recovery.</p>
         </article>
-        <article class="v2-pillar glass">
+        <article class="v2-pillar reveal">
           <div class="v2-pillar-icon icon-ops"></div>
           <h3>Operator-grade hygiene</h3>
           <p>Retention policies, artifact pruning, reconcile diagnostics, health counters, and incident bundles for confident ops.</p>
@@ -132,13 +126,12 @@ pruned: 4 artifacts  |  freed: 2.1 MB</code></pre>
       </div>
     </section>
 
-    <!-- ─── Architecture ─────────────────────────────────────────── -->
-    <section class="container v2-section v2-arch reveal">
-      <div class="v2-arch-left">
+    <!-- ─── Architecture ──────────────────────────────────────────────── -->
+    <section class="container v2-section v2-arch">
+      <div class="reveal">
         <p class="v2-label">Architecture</p>
         <h2 class="v2-section-title-sm">Three layers.<br>One coherent system.</h2>
-        <p class="v2-section-sub">Voxera OS runs alongside your existing Linux install, not in place of it. The substrate stays standard.</p>
-
+        <p class="v2-section-sub">Voxera OS runs alongside your existing Linux install, not in place of it. The substrate stays standard. You stay in control.</p>
         <div class="v2-layers">
           <div class="v2-layer">
             <span class="v2-layer-num">01</span>
@@ -163,10 +156,9 @@ pruned: 4 artifacts  |  freed: 2.1 MB</code></pre>
           </div>
         </div>
       </div>
-
-      <div class="v2-arch-right">
-        <div class="v2-stack glass">
-          <h4 class="v2-stack-title">Tech stack</h4>
+      <div class="reveal delay-2">
+        <div class="v2-stack">
+          <p class="v2-stack-title">Tech stack</p>
           <div class="v2-stack-row"><span>Language</span><strong>Python ≥ 3.10</strong></div>
           <div class="v2-stack-row"><span>CLI</span><strong>Typer + Rich</strong></div>
           <div class="v2-stack-row"><span>Data models</span><strong>Pydantic v2</strong></div>
@@ -181,9 +173,9 @@ pruned: 4 artifacts  |  freed: 2.1 MB</code></pre>
       </div>
     </section>
 
-    <!-- ─── Waitlist / Invite Only ─────────────────────────────── -->
+    <!-- ─── Waitlist ───────────────────────────────────────────────────── -->
     <section class="container v2-section" id="waitlist">
-      <div class="v2-waitlist glass reveal">
+      <div class="v2-waitlist reveal">
         <div class="v2-waitlist-badge">
           <span class="pulse-dot pulse-dot-lg"></span>
           Not open to the public
@@ -194,12 +186,8 @@ pruned: 4 artifacts  |  freed: 2.1 MB</code></pre>
         </p>
         <form class="v2-waitlist-form" id="waitlist-form">
           <input
-            type="email"
-            id="waitlist-email"
-            name="email"
-            placeholder="your@email.com"
-            required
-            autocomplete="email"
+            type="email" id="waitlist-email" name="email"
+            placeholder="your@email.com" required autocomplete="email"
             aria-label="Email address for waitlist"
           />
           <button type="submit" class="btn btn-primary" id="waitlist-submit">Request Access</button>
@@ -210,15 +198,18 @@ pruned: 4 artifacts  |  freed: 2.1 MB</code></pre>
 
   </main>
 
-  <footer class="site-footer container">
-    <div>
-      <strong>Voxera OS</strong>
-      <p>Alpha v0.1.5 · AI Control Plane · Invite Only</p>
-    </div>
-    <div class="footer-links">
-      <a href="features.html">Features</a>
-      <a href="quickstart.html">Quick Start</a>
-      <a href="docs.html">Docs</a>
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <strong>Voxera OS</strong>
+        <p>Alpha v0.1.5 · AI Control Plane · Invite Only</p>
+      </div>
+      <div class="footer-links">
+        <a href="features.html">Features</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Docs</a>
+        <a href="roadmap.html">Roadmap</a>
+      </div>
     </div>
   </footer>
 

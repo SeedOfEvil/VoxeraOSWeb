@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Voxera OS Roadmap — User-visible milestones after the Alpha v0.1.5 baseline." />
   <title>Voxera OS — Roadmap</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 </head>
 <body data-page="roadmap">
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
+
   <header class="site-header glass">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html"><span class="brand-orb"></span><span>Voxera <em>OS</em></span></a>
+      <a class="brand" href="index.html" aria-label="Voxera OS home">
+        <span class="brand-orb"></span>
+        <span>Voxera <em>OS</em></span>
+      </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
@@ -24,53 +28,84 @@
         <a href="docs.html">Docs</a>
         <a href="roadmap.html">Roadmap</a>
       </nav>
+      <a class="btn-nav-cta" href="index.html#waitlist">Join Waitlist</a>
     </div>
   </header>
+
   <main class="page-main container">
-<section class="page-hero reveal">
-  <p class="eyebrow">Roadmap</p>
-  <h1>User-visible milestones after the Alpha daily-driver baseline</h1>
-  <p class="lede">Alpha v0.1.4 locks in stability and operator UX. The next milestones focus on reliability signals, safer planning previews, and stronger provider behavior before broader voice expansion.</p>
-</section>
 
-<section class="section reveal">
-  <div class="timeline">
-    <article class="timeline-item glass">
-      <span class="time-badge">Next 4 weeks</span>
-      <h2>Clearer queue reliability signals</h2>
-      <p>Improve CLI and panel visibility for queue health, operator workflows, and confidence when handling failed/paused/pending states.</p>
-    </article>
-    <article class="timeline-item glass">
-      <span class="time-badge">Next 8 weeks</span>
-      <h2>Structured mission planning previews</h2>
-      <p>Safer dry-run simulation UX with richer previews of planned steps and explicit operator confirmation pathways.</p>
-    </article>
-    <article class="timeline-item glass">
-      <span class="time-badge">Next 12 weeks</span>
-      <h2>Provider behavior + mission catalog expansion</h2>
-      <p>Stronger OpenAI-compatible provider behavior, improved fallback handling, and broader mission coverage for common workflows.</p>
-    </article>
-  </div>
-</section>
+    <section class="page-hero reveal">
+      <p class="eyebrow">Roadmap · After v0.1.5</p>
+      <h1>What comes after the Alpha baseline</h1>
+      <p class="lede">Alpha v0.1.5 locks in operator-grade artifact hygiene on top of a solid daily-driver foundation. The next milestones focus on reliability signals, safer planning previews, and stronger provider behavior before broader voice expansion.</p>
+    </section>
 
-<section class="section reveal">
-  <div class="cta-band glass">
-    <div>
-      <p class="eyebrow">Alpha Positioning</p>
-      <h2>Trustworthy baseline before broader voice expansion</h2>
-      <p>Voxera OS Alpha v0.1.4 is intentionally focused: stable queue operations, clearer UX, and strong safety gates first.</p>
+    <section class="section reveal">
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <span class="time-badge">Near-term</span>
+          <h2>Panel auth hardening &amp; graceful daemon shutdown</h2>
+          <p>Rate limiting on panel auth endpoints and clean SIGTERM handling in the queue daemon for production-grade service reliability.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="time-badge">Near-term</span>
+          <h2>Brain fallback error classification in voxera doctor</h2>
+          <p>Surface brain fallback reason enums (TIMEOUT, AUTH, RATE_LIMIT, MALFORMED, NETWORK) directly in the doctor output for faster diagnosis.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="time-badge">Next 4 weeks</span>
+          <h2>Structured mission planning previews</h2>
+          <p>Richer dry-run simulation UX with explicit operator confirmation pathways and clearer capability usage summaries before committing to a plan.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="time-badge">Next 8 weeks</span>
+          <h2>Provider behavior hardening &amp; mission catalog expansion</h2>
+          <p>Stronger OpenAI-compatible and Ollama provider behavior, improved fallback chain handling, and a broader mission catalog with 10+ built-in workflows.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="time-badge">v0.3</span>
+          <h2>Voice stack</h2>
+          <p>STT/TTS integration, wake word detection, and a voice-first command loop. The "Hey Voxera" experience becomes real.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="time-badge">v0.4</span>
+          <h2>Signed skills, marketplace &amp; image packaging</h2>
+          <p>Signed skill bundles, a community skill marketplace, and ISO/image packaging for clean machine provisioning.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="cta-band">
+        <div>
+          <p class="eyebrow">Alpha positioning</p>
+          <h2>Trustworthy baseline before broader expansion</h2>
+          <p style="color:var(--text-sec);margin-top:.4rem">Alpha v0.1.5 is intentionally focused: stable queue operations, operator-grade hygiene, and strong safety gates — built to be relied on daily, not just demoed.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="features.html">See Feature Details</a>
+          <a class="btn btn-outline" href="docs.html">Read Ops Contracts</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <strong>Voxera OS</strong>
+        <p>Alpha v0.1.5 · AI Control Plane</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Docs</a>
+      </div>
     </div>
-    <div class="cta-actions">
-      <a class="btn btn-primary" href="features.html">See Feature Details</a>
-      <a class="btn btn-ghost" href="docs.html">Read Ops Contracts</a>
-    </div>
-  </div>
-</section>
-</main>
-  <footer class="site-footer container">
-    <div><strong>Voxera OS</strong><p>Alpha v0.1.4</p></div>
-    <div class="footer-links"><a href="index.html">Home</a><a href="quickstart.html">Quick Start</a><a href="docs.html">Docs</a></div>
   </footer>
+
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

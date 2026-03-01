@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Voxera OS Features — Production-ready AI control plane capabilities: mission planning, queue operations, sandbox execution, and operator tooling." />
   <title>Voxera OS — Features</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 </head>
 <body data-page="features">
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
+
   <header class="site-header glass">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html"><span class="brand-orb"></span><span>Voxera <em>OS</em></span></a>
+      <a class="brand" href="index.html" aria-label="Voxera OS home">
+        <span class="brand-orb"></span>
+        <span>Voxera <em>OS</em></span>
+      </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
@@ -24,72 +28,149 @@
         <a href="docs.html">Docs</a>
         <a href="roadmap.html">Roadmap</a>
       </nav>
+      <a class="btn-nav-cta" href="index.html#waitlist">Join Waitlist</a>
     </div>
   </header>
+
   <main class="page-main container">
-<section class="page-hero reveal">
-  <p class="eyebrow">Feature Overview</p>
-  <h1>Alpha v0.1.4 capabilities that make Voxera reliable</h1>
-  <p class="lede">This release is not a flashy promise build. It is a stability + UX baseline focused on queue reliability, approval workflows, deterministic planning paths, and operator visibility.</p>
-</section>
 
-<section class="section reveal">
-  <div class="grid two">
-    <article class="card glass">
-      <h2>Mission Planning</h2>
-      <ul class="feature-list compact">
-        <li><code>voxera missions plan "&lt;goal&gt;"</code> uses cloud planning while preserving local policy + approval gating.</li>
-        <li>Deterministic fast-path for common note/file writes emits exactly one <code>files.write_text</code> step.</li>
-        <li>Planner rewrites sandbox-host-inappropriate steps to safer manual confirmation clipboard actions when verification intent is not explicit.</li>
-        <li>Built-in missions + repo mission files + user mission files with deterministic resolution order.</li>
-      </ul>
-    </article>
-    <article class="card glass">
-      <h2>Queue & Inbox Operations</h2>
-      <ul class="feature-list compact">
-        <li>Queue daemon processes mission/goal JSON jobs via inbox intake contract.</li>
-        <li>Approval artifacts written to <code>pending/approvals/*.approval.json</code>.</li>
-        <li>Commands: status, approvals list/approve/deny, cancel, retry, pause, resume.</li>
-        <li>Human-friendly queueing: <code>voxera inbox add</code> and <code>voxera inbox list</code>.</li>
-      </ul>
-    </article>
-    <article class="card glass">
-      <h2>Artifacts, Failures, and Retention</h2>
-      <ul class="feature-list compact">
-        <li>Per-job artifact bundles under <code>notes/queue/artifacts/&lt;job_id&gt;/</code> with plan, actions timeline, stdout/stderr, generated files metadata.</li>
-        <li>Failed-job sidecar contract: <code>failed/&lt;job_stem&gt;.error.json</code> with schema versioning and validation.</li>
-        <li>Retention policies by age/count with prune summaries and health counters.</li>
-        <li>Invalid sidecars are ignored in snapshots and audited deterministically.</li>
-      </ul>
-    </article>
-    <article class="card glass">
-      <h2>Services, Panel, and Updates</h2>
-      <ul class="feature-list compact">
-        <li>Systemd user service lifecycle via Make targets (<code>services-install/status/restart/stop/disable</code>).</li>
-        <li>Panel supports queue + mission creation and insights; POST mutation endpoints by default.</li>
-        <li><code>make update</code> / <code>scripts/update.sh</code> restart services if installed and enabled.</li>
-        <li>Update flow avoids deleting anything under <code>~/VoxeraOS/notes</code>.</li>
-      </ul>
-    </article>
-  </div>
-</section>
+    <section class="page-hero reveal">
+      <p class="eyebrow">Alpha v0.1.5 · Feature Overview</p>
+      <h1>Capabilities built for trustworthy daily use</h1>
+      <p class="lede">This release is not a flashy promise build. It is a stability + UX baseline focused on queue reliability, approval workflows, deterministic planning paths, operator visibility, and artifact hygiene.</p>
+    </section>
 
-<section class="section reveal">
-  <div class="section-head">
-    <p class="eyebrow">Security & Safety Model</p>
-    <h2>Guardrails by design</h2>
-  </div>
-  <div class="grid three">
-    <article class="card glass glow-card"><h3>Audited actions</h3><p>Everything records what happened, why it happened, and how to undo it where possible.</p></article>
-    <article class="card glass glow-card"><h3>Skill-declared permissions</h3><p>Skills declare scope/needs; policies decide allow/ask/deny.</p></article>
-    <article class="card glass glow-card"><h3>Sandbox isolation</h3><p>Rootless Podman backend, read-only root, writable <code>/work</code> only, and default network disabled.</p></article>
-  </div>
-</section>
-</main>
-  <footer class="site-footer container">
-    <div><strong>Voxera OS</strong><p>Alpha v0.1.4</p></div>
-    <div class="footer-links"><a href="index.html">Home</a><a href="quickstart.html">Quick Start</a><a href="docs.html">Docs</a></div>
+    <!-- Core capabilities -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Core capabilities</p>
+        <h2>What works in Alpha v0.1.5</h2>
+      </div>
+      <div class="grid two stagger-children">
+        <article class="card glow-card reveal">
+          <h2>Mission Planning</h2>
+          <ul class="feature-list compact">
+            <li><code>voxera missions plan "&lt;goal&gt;"</code> uses cloud planning while preserving local policy and approval gating.</li>
+            <li>Deterministic fast-path for common note/file writes emits exactly one <code>files.write_text</code> step.</li>
+            <li>Planner rewrites sandbox-inappropriate steps to safe clipboard confirmation actions when intent is not explicit.</li>
+            <li>Built-in, repo, and user mission files with deterministic resolution order.</li>
+          </ul>
+        </article>
+        <article class="card glow-card reveal">
+          <h2>Queue &amp; Inbox Operations</h2>
+          <ul class="feature-list compact">
+            <li>Queue daemon processes mission/goal JSON jobs via a strict inbox intake contract.</li>
+            <li>Approval artifacts written to <code>pending/approvals/*.approval.json</code> with policy reason and scope metadata.</li>
+            <li>Full lifecycle: status, approvals list/approve/deny, cancel, retry, pause, resume, unlock.</li>
+            <li>Human-friendly queueing: <code>voxera inbox add</code> and <code>voxera inbox list</code>.</li>
+          </ul>
+        </article>
+        <article class="card glow-card reveal">
+          <h2>Artifact Hygiene &amp; Retention</h2>
+          <ul class="feature-list compact">
+            <li>Per-job bundles under <code>notes/queue/artifacts/&lt;job_id&gt;/</code> with plan, action timeline, stdout/stderr, and generated file metadata.</li>
+            <li><code>voxera artifacts prune</code> with configurable <code>--max-age-days</code> / <code>--max-count</code> and dry-run by default.</li>
+            <li>Failed-job sidecar contract with schema versioning and deterministic validation.</li>
+            <li>Retention policies by age and count with prune summaries and health counters.</li>
+          </ul>
+        </article>
+        <article class="card glow-card reveal">
+          <h2>Services, Panel &amp; Updates</h2>
+          <ul class="feature-list compact">
+            <li>Systemd user service lifecycle via Make targets: <code>services-install</code>, <code>status</code>, <code>restart</code>, <code>stop</code>, <code>disable</code>.</li>
+            <li>Panel supports queue + mission creation and insights. POST mutation endpoints by default.</li>
+            <li><code>make update</code> / <code>scripts/update.sh</code> pulls, reinstalls, and restarts services safely.</li>
+            <li>Update flow never deletes anything under <code>~/VoxeraOS/notes</code>.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Safety model -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Safety model</p>
+        <h2>Guardrails by design</h2>
+      </div>
+      <div class="grid three stagger-children">
+        <article class="card glow-card reveal">
+          <h3>Fully audited actions</h3>
+          <p>Every action records what happened, why it happened, and how to undo it where possible. Nothing is silent.</p>
+        </article>
+        <article class="card glow-card reveal">
+          <h3>Skill-declared permissions</h3>
+          <p>Skills declare their scope and network needs. Policies decide allow, ask, or deny at runtime — deterministically.</p>
+        </article>
+        <article class="card glow-card reveal">
+          <h3>Sandbox isolation</h3>
+          <p>Rootless Podman backend, read-only root filesystem, writable <code>/work</code> only, and network disabled by default.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Config contract -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Config contract</p>
+        <h2>Deterministic, inspectable configuration</h2>
+      </div>
+      <div class="grid two stagger-children">
+        <article class="card reveal">
+          <h3>Strict precedence order</h3>
+          <p style="margin-bottom:.6rem">CLI overrides → <code>VOXERA_*</code> env → config file → defaults. Always predictable, never surprising.</p>
+          <div class="code-block nested">
+            <pre><code>voxera config show      # redacted view
+voxera config validate  # non-zero on errors
+voxera config snapshot  # write audit snapshot</code></pre>
+          </div>
+        </article>
+        <article class="card reveal">
+          <h3>Runtime config file</h3>
+          <p style="margin-bottom:.6rem">Optional override at <code>~/.config/voxera/config.json</code>. Keep secrets out of git.</p>
+          <div class="code-block nested">
+            <pre><code>{
+  "panel_host": "127.0.0.1",
+  "panel_port": 8844,
+  "queue_lock_stale_s": 3600,
+  "panel_csrf_enabled": true
+}</code></pre>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section reveal">
+      <div class="cta-band">
+        <div>
+          <p class="eyebrow">Ready to explore?</p>
+          <h2>Get the full operator setup running</h2>
+          <p style="color:var(--text-sec);margin-top:.4rem">Follow the Quick Start to bootstrap your queue, configure your brain provider, and run your first mission.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="quickstart.html">Quick Start</a>
+          <a class="btn btn-outline" href="docs.html">Read the Docs</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <strong>Voxera OS</strong>
+        <p>Alpha v0.1.5 · AI Control Plane</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Docs</a>
+        <a href="roadmap.html">Roadmap</a>
+      </div>
+    </div>
   </footer>
+
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
