@@ -628,6 +628,329 @@ body::before {
 .page-hero.center h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   Accordions — <details> / <summary>
+═══════════════════════════════════════════════════════════════════════ */
+
+/* Inline "show more" toggle (hero demo, quickstart full commands) */
+.show-details {
+  margin-top: 1rem;
+}
+.show-details summary {
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: .4rem;
+  color: var(--accent); font-size: .85rem; font-weight: 600;
+  list-style: none; user-select: none;
+  padding: .5rem .95rem;
+  border: 1px solid rgba(94,92,230,.25);
+  border-radius: 10px;
+  background: rgba(94,92,230,.05);
+  transition: background .2s var(--ease);
+}
+.show-details summary::-webkit-details-marker { display: none; }
+.show-details summary::before {
+  content: "▸"; font-size: .8rem;
+  transition: transform .2s var(--ease);
+}
+.show-details[open] summary::before { transform: rotate(90deg); }
+.show-details summary:hover { background: rgba(94,92,230,.1); }
+.show-details-body { margin-top: .75rem; }
+
+/* Engineering details accordion (compact, inside pillar cards) */
+details.eng-details {
+  margin-top: .85rem; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line);
+}
+details.eng-details summary {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .65rem 1rem; cursor: pointer; list-style: none;
+  font-size: .8rem; font-weight: 600; color: var(--text-ter);
+  background: var(--bg-alt); user-select: none;
+  transition: color .2s var(--ease), background .2s var(--ease);
+}
+details.eng-details summary::-webkit-details-marker { display: none; }
+details.eng-details summary::before {
+  content: "›"; font-size: 1rem; color: var(--text-ter);
+  transition: transform .2s var(--ease);
+}
+details.eng-details[open] summary::before { transform: rotate(90deg); }
+details.eng-details[open] summary { color: var(--text-sec); }
+details.eng-details summary:hover { color: var(--text-sec); background: rgba(0,0,0,.05); }
+.eng-body {
+  padding: 1rem 1.1rem; border-top: 1px solid var(--line);
+  background: var(--bg-card);
+  font-size: .84rem; color: var(--text-sec); line-height: 1.62;
+}
+.eng-body code { color: var(--accent); font-size: .82em; }
+.eng-body ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+.eng-body li { margin: .4rem 0; }
+.eng-body .code-block { margin-top: .75rem; }
+
+/* Operator proof block */
+.proof-block {
+  margin-top: .9rem; padding: .6rem .95rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(94,92,230,.04);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: .83rem; color: var(--text-sec); font-style: italic;
+}
+.proof-block code { color: var(--accent); font-style: normal; font-size: .82em; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Home — What it does / 3 cards
+═══════════════════════════════════════════════════════════════════════ */
+.does-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.25rem;
+}
+.does-card {
+  text-align: center; padding: 2rem 1.5rem;
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-xs);
+  transition: box-shadow .28s var(--ease), transform .25s var(--ease);
+}
+.does-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.does-icon {
+  width: 52px; height: 52px; border-radius: 14px; margin: 0 auto .9rem;
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+}
+.does-icon.blue   { background: rgba(10,132,255,.1); }
+.does-icon.green  { background: rgba(52,199,89,.1); }
+.does-icon.purple { background: rgba(139,92,246,.1); }
+.does-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+.does-card p  { color: var(--text-sec); font-size: .88rem; line-height: 1.62; margin: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Home — Why operators trust it / 5 trust cards
+═══════════════════════════════════════════════════════════════════════ */
+.trust-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem;
+}
+.trust-card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.4rem;
+  transition: box-shadow .28s var(--ease), transform .25s var(--ease);
+  position: relative; overflow: hidden;
+}
+.trust-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), #8b5cf6);
+  opacity: 0; transition: opacity .3s var(--ease);
+}
+.trust-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.trust-card:hover::before { opacity: 1; }
+.trust-card h3 { font-size: .92rem; font-weight: 700; margin-bottom: .35rem; }
+.trust-card p  { color: var(--text-sec); font-size: .85rem; line-height: 1.58; margin: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Home — Where this is going / 3 cards
+═══════════════════════════════════════════════════════════════════════ */
+.where-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem;
+  margin-top: 1.5rem;
+}
+.wt-card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 1.6rem 1.4rem;
+  transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+}
+.wt-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.wt-badge {
+  display: inline-block; border-radius: 999px; padding: .28rem .72rem;
+  border: 1px solid; font-size: .73rem; font-weight: 700;
+  letter-spacing: .02em; margin-bottom: .75rem;
+}
+.wt-badge.now   { border-color: rgba(52,199,89,.4);  background: rgba(52,199,89,.07);  color: #1a7f45; }
+.wt-badge.next  { border-color: rgba(94,92,230,.35); background: rgba(94,92,230,.06);  color: var(--accent); }
+.wt-badge.later { border-color: var(--line);         background: var(--bg-alt);        color: var(--text-ter); }
+.wt-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: .55rem; }
+.wt-card ul { margin: 0; padding-left: 1.1rem; color: var(--text-sec); }
+.wt-card li { font-size: .86rem; margin: .35rem 0; line-height: 1.5; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Features — Pillar blocks (stacked full-width)
+═══════════════════════════════════════════════════════════════════════ */
+.pillar-block {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 1.8rem;
+  box-shadow: var(--shadow-xs); transition: box-shadow .25s var(--ease);
+}
+.pillar-block:hover { box-shadow: var(--shadow); }
+.pillar-eyebrow {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: .42rem;
+}
+.pillar-block h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: .7rem; }
+.pillar-benefits { margin: 0; padding-left: 0; list-style: none; }
+.pillar-benefits li {
+  padding: .4rem 0; border-bottom: 1px solid var(--line-soft);
+  font-size: .88rem; color: var(--text-sec);
+  display: flex; gap: .5rem; align-items: flex-start; line-height: 1.52;
+}
+.pillar-benefits li:last-child { border-bottom: none; padding-bottom: 0; }
+.pillar-benefits li::before {
+  content: "✓"; color: var(--accent-2); font-weight: 700;
+  flex-shrink: 0; font-size: .85rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Features — Ships today vs planned
+═══════════════════════════════════════════════════════════════════════ */
+.ships-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+.ships-card { border-radius: var(--radius); padding: 1.4rem; border: 1px solid; }
+.ships-card.today   { background: rgba(52,199,89,.04); border-color: rgba(52,199,89,.22); }
+.ships-card.planned { background: rgba(94,92,230,.04); border-color: rgba(94,92,230,.18); }
+.ships-card h3 {
+  font-size: .8rem; font-weight: 700; margin-bottom: .65rem;
+  text-transform: uppercase; letter-spacing: .07em;
+}
+.ships-card.today   h3 { color: #1a7f45; }
+.ships-card.planned h3 { color: var(--accent); }
+.ships-list { margin: 0; padding-left: 0; list-style: none; }
+.ships-list li {
+  font-size: .86rem; color: var(--text-sec); padding: .3rem 0;
+  border-bottom: 1px solid var(--line-soft);
+  display: flex; gap: .42rem; align-items: flex-start; line-height: 1.5;
+}
+.ships-list li:last-child { border-bottom: none; }
+.ships-list li::before { flex-shrink: 0; font-size: .6rem; margin-top: .38em; }
+.ships-list.today-list   li::before { content: "●"; color: var(--accent-2); }
+.ships-list.planned-list li::before { content: "○"; color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Quick Start — Steps
+═══════════════════════════════════════════════════════════════════════ */
+.qs-steps { display: grid; gap: 1rem; }
+.qs-step {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1.4rem; background: var(--bg-card);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
+}
+.step-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 700; flex-shrink: 0; margin-top: .05rem;
+}
+.qs-step-body h3 { font-size: .95rem; font-weight: 700; margin-bottom: .4rem; }
+.qs-step-body p  { color: var(--text-sec); font-size: .88rem; line-height: 1.58; margin: 0; }
+.qs-step-body .code-block { margin-top: .7rem; }
+
+/* Demo featured block */
+.demo-featured {
+  max-width: 640px; margin-inline: auto;
+  border-radius: var(--radius-xl); overflow: hidden;
+  background: var(--bg-dark); border: 1px solid var(--line-dark);
+  box-shadow: var(--shadow-lg);
+}
+.demo-featured .v2-terminal-body { padding: 1.2rem 1.4rem; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Operator Guide — Doc tiles
+═══════════════════════════════════════════════════════════════════════ */
+.doc-tiles { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+.doc-tile {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 1.6rem;
+  text-decoration: none; color: var(--text); box-shadow: var(--shadow-xs);
+  transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+  position: relative; overflow: hidden; display: flex; flex-direction: column;
+}
+.doc-tile:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.doc-tile::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), #8b5cf6);
+  opacity: 0; transition: opacity .3s var(--ease);
+}
+.doc-tile:hover::before { opacity: 1; }
+.doc-tile-label {
+  font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: .42rem;
+}
+.doc-tile h3 { font-size: .98rem; font-weight: 700; margin-bottom: .38rem; }
+.doc-tile p  { color: var(--text-sec); font-size: .86rem; line-height: 1.58; flex-grow: 1; margin: 0; }
+.doc-tile-arrow { margin-top: .9rem; color: var(--accent); font-size: .82rem; font-weight: 600; }
+
+/* Ops contract summary table */
+.contract-table { width: 100%; border-collapse: collapse; font-size: .87rem; margin-top: .75rem; }
+.contract-table th {
+  text-align: left; font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--text-ter);
+  border-bottom: 1px solid var(--line); padding: .5rem .75rem;
+}
+.contract-table td {
+  padding: .65rem .75rem; border-bottom: 1px solid var(--line-soft);
+  vertical-align: top; color: var(--text-sec); line-height: 1.5;
+}
+.contract-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+.contract-table td code { color: var(--accent); font-size: .82em; }
+.contract-table tr:last-child td { border-bottom: none; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Roadmap — Product cards
+═══════════════════════════════════════════════════════════════════════ */
+.roadmap-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+.roadmap-card {
+  border-radius: var(--radius-lg); padding: 1.8rem 1.6rem;
+  border: 1px solid var(--line); background: var(--bg-card);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+}
+.roadmap-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.rm-badge {
+  display: inline-flex; border-radius: 999px; padding: .28rem .72rem;
+  font-size: .73rem; font-weight: 700; border: 1px solid; letter-spacing: .02em; margin-bottom: .75rem;
+}
+.rm-badge.solid { border-color: rgba(52,199,89,.35); background: rgba(52,199,89,.08);  color: #1a7f45; }
+.rm-badge.next  { border-color: rgba(94,92,230,.35); background: rgba(94,92,230,.07);  color: var(--accent); }
+.rm-badge.later { border-color: var(--line);         background: var(--bg-alt);        color: var(--text-ter); }
+.roadmap-card h2 { font-size: 1rem; font-weight: 700; margin-bottom: .7rem; }
+.roadmap-card ul { margin: 0; padding-left: 1.1rem; color: var(--text-sec); }
+.roadmap-card li { font-size: .86rem; margin: .35rem 0; line-height: 1.52; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Vera page
+═══════════════════════════════════════════════════════════════════════ */
+.vera-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(139,92,246,.07); border: 1px solid rgba(139,92,246,.25);
+  border-radius: 999px; padding: .36rem .95rem;
+  font-size: .76rem; font-weight: 700; letter-spacing: .06em;
+  color: #7c3aed; text-transform: uppercase; margin-bottom: 1.8rem;
+}
+.vera-grounded-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+.vera-capability-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Use Cases page
+═══════════════════════════════════════════════════════════════════════ */
+.usecase-card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-xs);
+  transition: box-shadow .28s var(--ease), transform .25s var(--ease);
+}
+.usecase-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.uc-tag {
+  font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: .42rem;
+}
+.usecase-card h2 { font-size: 1.08rem; font-weight: 700; margin-bottom: .85rem; }
+.uc-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+.uc-step {
+  padding: .85rem .95rem; border-radius: var(--radius);
+  font-size: .84rem; color: var(--text-sec); line-height: 1.52;
+}
+.uc-step strong {
+  display: block; font-size: .7rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; margin-bottom: .3rem;
+}
+.uc-step.problem  { background: rgba(255,59,48,.05);  border: 1px solid rgba(255,59,48,.14); }
+.uc-step.problem  strong { color: #c0392b; }
+.uc-step.approach { background: rgba(94,92,230,.05);  border: 1px solid rgba(94,92,230,.16); }
+.uc-step.approach strong { color: var(--accent); }
+.uc-step.outcome  { background: rgba(52,199,89,.05);  border: 1px solid rgba(52,199,89,.18); }
+.uc-step.outcome  strong { color: #1a7f45; }
+
+/* ═══════════════════════════════════════════════════════════════════════
    Responsive
 ═══════════════════════════════════════════════════════════════════════ */
 @media (max-width: 1020px) {
@@ -642,6 +965,16 @@ body::before {
   .stats-grid   { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .grid.three   { grid-template-columns: 1fr; }
   .grid.two     { grid-template-columns: 1fr; }
+  /* new components */
+  .does-grid          { grid-template-columns: 1fr; }
+  .trust-grid         { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .where-grid         { grid-template-columns: 1fr; }
+  .roadmap-grid       { grid-template-columns: 1fr; }
+  .vera-grounded-grid { grid-template-columns: 1fr; }
+  .vera-capability-grid { grid-template-columns: 1fr; }
+  .doc-tiles          { grid-template-columns: 1fr; }
+  .uc-flow            { grid-template-columns: 1fr; }
+  .ships-grid         { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {
@@ -672,4 +1005,9 @@ body::before {
   .stats-grid { grid-template-columns: 1fr; }
   .cta-band { padding: 1.5rem 1.2rem; }
   .site-footer .container { flex-direction: column; align-items: flex-start; }
+  /* new components */
+  .trust-grid { grid-template-columns: 1fr; }
+  .footer-links { gap: .6rem; }
+  .contract-table { font-size: .82rem; }
+  .contract-table td:first-child { white-space: normal; }
 }

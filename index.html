@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS — Production-ready AI control plane. Voice-first AI orchestration with policy enforcement, approval gates, and sandboxed execution on Linux." />
-  <title>Voxera OS — AI Control Plane</title>
+  <meta name="description" content="Voxera OS — the operator-grade AI control plane for Linux. Queue-driven. Approval-gated. Audited. Deterministic." />
+  <title>Voxera OS — AI Control Plane for Linux</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -24,8 +24,10 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
+        <a href="vera.html">Vera</a>
+        <a href="usecases.html">Use Cases</a>
         <a href="quickstart.html">Quick Start</a>
-        <a href="docs.html">Docs</a>
+        <a href="docs.html">Operator Guide</a>
         <a href="roadmap.html">Roadmap</a>
       </nav>
       <a class="btn-nav-cta" href="#waitlist">Join Waitlist</a>
@@ -41,16 +43,16 @@
         Invite only · Alpha v0.1.5
       </div>
       <h1 class="v2-headline reveal delay-1">
-        The AI control plane<br>
-        <span class="gradient-text">your Linux deserves.</span>
+        The operator-grade<br>
+        <span class="gradient-text">AI control plane for Linux.</span>
       </h1>
       <p class="v2-lede reveal delay-2">
-        Voxera OS is a production-ready framework that sits between you and your AI.<br class="br-lg">
-        Every action is routed, approved, audited, and contained — before it touches your system.
+        Queue-driven. Approval-gated. Audited. Deterministic.<br class="br-lg">
+        Voxera OS puts a policy layer between you and your AI — so every action is intentional, traceable, and safe to run daily.
       </p>
       <div class="v2-cta-row reveal delay-3">
-        <a class="btn btn-primary btn-lg" href="#waitlist">Request Early Access</a>
-        <a class="btn btn-ghost btn-lg" href="features.html">Explore the Framework</a>
+        <a class="btn btn-primary btn-lg" href="quickstart.html">Run the 5-minute demo</a>
+        <a class="btn btn-ghost btn-lg" href="features.html">Read how it works</a>
       </div>
       <div class="v2-name-row reveal delay-4">
         <span class="v2-pill">OS: Voxera OS</span>
@@ -60,118 +62,197 @@
       </div>
     </section>
 
-    <!-- ─── Terminal ──────────────────────────────────────────────────── -->
+    <!-- ─── Proof snippet + demo toggle ──────────────────────────────── -->
     <section class="container v2-terminal-section reveal">
-      <div class="v2-terminal">
+      <div class="v2-terminal" style="max-width:640px;margin-inline:auto">
         <div class="v2-terminal-bar">
           <span class="dot-r"></span>
           <span class="dot-y"></span>
           <span class="dot-g"></span>
-          <span class="v2-terminal-title">voxera — alpha v0.1.5</span>
+          <span class="v2-terminal-title">voxera demo</span>
         </div>
-        <pre class="v2-terminal-body"><code><span class="tc-dim">$</span> voxera --version
-voxera 0.1.5
+        <pre class="v2-terminal-body"><code><span class="tc-dim">$</span> voxera demo
+<span class="tc-green">✓</span> Queue healthy  ·  Daemon running  ·  Demo job queued  ·  Awaiting approval</code></pre>
+      </div>
+      <div style="text-align:center;margin-top:1rem">
+        <details class="show-details" style="display:inline-block">
+          <summary>Show demo commands</summary>
+          <div class="show-details-body">
+            <div class="v2-terminal" style="max-width:640px;margin-inline:auto;text-align:left">
+              <div class="v2-terminal-bar">
+                <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+                <span class="v2-terminal-title">full demo walkthrough</span>
+              </div>
+              <pre class="v2-terminal-body"><code><span class="tc-dim"># 1. Install</span>
+python3 -m venv .venv &amp;&amp; source .venv/bin/activate
+pip install -e ".[dev]" &amp;&amp; make services-install
 
-<span class="tc-dim">$</span> voxera queue status
-queue: <span class="tc-green">healthy</span>  ·  inbox: 1  ·  pending: 0  ·  approvals: 0  ·  done: 12  ·  failed: 0
+<span class="tc-dim"># 2. Run the demo (bootstraps queue + daemon)</span>
+voxera demo
 
-<span class="tc-dim">$</span> voxera inbox add "Write a daily check-in note with priorities and blockers"
+<span class="tc-dim"># 3. Queue a job manually</span>
+<span class="tc-dim">$</span> voxera inbox add "Write a daily check-in note"
 queued → <span class="tc-blue">notes/queue/inbox/job-1748.json</span>
 
+<span class="tc-dim"># 4. Process + approve</span>
 <span class="tc-dim">$</span> voxera daemon --once
-processed: 1 job  ·  approval required: no  ·  moved → done/
+<span class="tc-dim">$</span> voxera queue approvals list
+<span class="tc-dim">$</span> voxera queue approvals approve &lt;job_id&gt;
 
-<span class="tc-dim">$</span> voxera artifacts prune --max-age-days 30 --yes
-pruned: 4 artifacts  ·  freed: 2.1 MB</code></pre>
+<span class="tc-dim"># 5. Health check</span>
+<span class="tc-dim">$</span> voxera queue status
+queue: <span class="tc-green">healthy</span>  ·  done: 1  ·  failed: 0  ·  approvals: 0</code></pre>
+            </div>
+            <p style="margin-top:.75rem;font-size:.82rem;color:var(--text-ter);text-align:center">
+              For complete run instructions, <a class="inline-link" href="docs.html">read the Operator Guide</a>.
+            </p>
+          </div>
+        </details>
       </div>
     </section>
 
-    <!-- ─── Six pillars ───────────────────────────────────────────────── -->
+    <!-- ─── What it does — 3 cards ───────────────────────────────────── -->
     <section class="container v2-section">
       <div class="v2-section-intro reveal">
-        <p class="v2-label">Production-ready framework</p>
-        <h2 class="v2-section-title">Control. Audit. Trust.</h2>
-        <p class="v2-section-sub">Not another AI wrapper. Voxera OS is an operator-grade control plane built around the belief that AI should ask, not assume.</p>
+        <p class="v2-label">What Voxera OS does</p>
+        <h2 class="v2-section-title">AI should ask, not assume.</h2>
+        <p class="v2-section-sub">Three jobs. One coherent system. Every action stays inside the boundary you set.</p>
       </div>
-      <div class="v2-pillars stagger-children">
-        <article class="v2-pillar reveal">
-          <div class="v2-pillar-icon icon-lock"></div>
-          <h3>Approval-gated by default</h3>
-          <p>Risky actions — network calls, installs, credentials — require explicit human sign-off. Policy decides allow, ask, or deny at runtime.</p>
+      <div class="does-grid stagger-children">
+        <article class="does-card reveal">
+          <div class="does-icon blue">📥</div>
+          <h3>Turn intent into jobs</h3>
+          <p>Natural language goals become structured queue jobs. The daemon processes them deterministically — one at a time, with a full audit trail.</p>
         </article>
-        <article class="v2-pillar reveal">
-          <div class="v2-pillar-icon icon-log"></div>
-          <h3>Complete audit trail</h3>
+        <article class="does-card reveal">
+          <div class="does-icon purple">🔒</div>
+          <h3>Gate risk with approvals</h3>
+          <p>Risky actions require explicit operator sign-off. Policy decides allow, ask, or deny at runtime. No job bypasses the gate.</p>
+        </article>
+        <article class="does-card reveal">
+          <div class="does-icon green">📋</div>
+          <h3>Prove what happened</h3>
           <p>Every job emits a structured bundle: mission plan, action timeline, stdout, stderr, and schema-versioned failure sidecars.</p>
-        </article>
-        <article class="v2-pillar reveal">
-          <div class="v2-pillar-icon icon-box"></div>
-          <h3>Sandboxed execution</h3>
-          <p>Rootless Podman with read-only root and network-off by default. Each job gets an isolated workspace. No cross-job bleed.</p>
-        </article>
-        <article class="v2-pillar reveal">
-          <div class="v2-pillar-icon icon-brain"></div>
-          <h3>Pluggable AI backends</h3>
-          <p>Gemini, OpenAI-compatible, OpenRouter, and local Ollama — with tiered fallback and classified failure reason tracking.</p>
-        </article>
-        <article class="v2-pillar reveal">
-          <div class="v2-pillar-icon icon-queue"></div>
-          <h3>Reliable queue engine</h3>
-          <p>Daemon-driven inbox, approval inbox, cancel/retry/pause — with atomic job writes and lock-safe stale recovery.</p>
-        </article>
-        <article class="v2-pillar reveal">
-          <div class="v2-pillar-icon icon-ops"></div>
-          <h3>Operator-grade hygiene</h3>
-          <p>Retention policies, artifact pruning, reconcile diagnostics, health counters, and incident bundles for confident ops.</p>
         </article>
       </div>
     </section>
 
-    <!-- ─── Architecture ──────────────────────────────────────────────── -->
+    <!-- ─── Why operators trust it — 5 trust cards ───────────────────── -->
+    <section class="container v2-section">
+      <div class="v2-section-intro reveal">
+        <p class="v2-label">Why operators trust it</p>
+        <h2 class="v2-section-title">Reliability isn't a feature. It's the foundation.</h2>
+        <p class="v2-section-sub">Five shipped behaviors that make Voxera OS safe to run as a daily driver, not just a demo.</p>
+      </div>
+      <div class="trust-grid stagger-children">
+        <article class="trust-card reveal">
+          <h3>Deterministic queue lifecycle</h3>
+          <p>Cancel, retry, prune, and reconcile — every bucket is inspectable and cleanable. No silent state transitions, ever.</p>
+        </article>
+        <article class="trust-card reveal">
+          <h3>Single-writer daemon lock + safe restart</h3>
+          <p>One writer at a time. Graceful SIGTERM handling ensures the daemon shuts down cleanly, never corrupting queue state on restart.</p>
+        </article>
+        <article class="trust-card reveal">
+          <h3>Startup recovery + quarantine</h3>
+          <p>Ambiguous jobs on startup go to quarantine — not silently re-run. No double-execution, no mystery failures on daemon restart.</p>
+        </article>
+        <article class="trust-card reveal">
+          <h3>Brain fallback classification</h3>
+          <p>When AI falls back, you see exactly why: TIMEOUT, AUTH, RATE_LIMIT, MALFORMED, NETWORK, or UNKNOWN — never a silent failure.</p>
+        </article>
+        <article class="trust-card reveal">
+          <h3>Non-destructive setup wizard</h3>
+          <p>Keep, skip, or replace — per-provider. The setup wizard never overwrites existing configuration without asking first.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Three layers ──────────────────────────────────────────────── -->
     <section class="container v2-section v2-arch">
       <div class="reveal">
         <p class="v2-label">Architecture</p>
         <h2 class="v2-section-title-sm">Three layers.<br>One coherent system.</h2>
-        <p class="v2-section-sub">Voxera OS runs alongside your existing Linux install, not in place of it. The substrate stays standard. You stay in control.</p>
+        <p class="v2-section-sub">Voxera OS runs alongside your Linux — not in place of it. The substrate stays standard. You stay in control.</p>
         <div class="v2-layers">
           <div class="v2-layer">
             <span class="v2-layer-num">01</span>
             <div>
               <strong>Substrate OS</strong>
-              <p>Ubuntu, Fedora, or any Linux. Drivers, filesystem, networking. Voxera doesn't touch this layer.</p>
+              <p>Your Linux stays standard. Ubuntu, Fedora, or any distribution. Voxera sits alongside it — never replacing drivers, filesystem, or networking.</p>
             </div>
           </div>
           <div class="v2-layer">
             <span class="v2-layer-num">02</span>
             <div>
               <strong>AI Control Plane</strong>
-              <p>Intent routing, cloud mission planning, tool runner, memory, and policy enforcement. This is Voxera OS.</p>
+              <p>Vera routes your intent through policy-aware queues, cloud planning, and approval gates. This is Voxera OS — the layer that makes AI trustworthy.</p>
             </div>
           </div>
           <div class="v2-layer">
             <span class="v2-layer-num">03</span>
             <div>
               <strong>Experience Layer</strong>
-              <p>Voice shell, web panel, CLI. The interface is modular — voice-first today, expandable tomorrow.</p>
+              <p>CLI today, voice tomorrow. Operators start with <code>voxera</code> CLI and the web panel — and grow into "Hey Voxera" when voice ships.</p>
             </div>
           </div>
         </div>
       </div>
       <div class="reveal delay-2">
         <div class="v2-stack">
-          <p class="v2-stack-title">Tech stack</p>
+          <p class="v2-stack-title">Built on</p>
           <div class="v2-stack-row"><span>Language</span><strong>Python ≥ 3.10</strong></div>
-          <div class="v2-stack-row"><span>CLI</span><strong>Typer + Rich</strong></div>
-          <div class="v2-stack-row"><span>Data models</span><strong>Pydantic v2</strong></div>
+          <div class="v2-stack-row"><span>CLI + UI</span><strong>Typer + Rich</strong></div>
           <div class="v2-stack-row"><span>Web panel</span><strong>FastAPI + Uvicorn</strong></div>
-          <div class="v2-stack-row"><span>HTTP</span><strong>httpx (async)</strong></div>
-          <div class="v2-stack-row"><span>AI backends</span><strong>Gemini, OpenAI-compat</strong></div>
-          <div class="v2-stack-row"><span>Sandbox</span><strong>Podman (rootless)</strong></div>
+          <div class="v2-stack-row"><span>AI backends</span><strong>Gemini, OpenAI-compat, Ollama</strong></div>
+          <div class="v2-stack-row"><span>Sandbox</span><strong>Podman rootless</strong></div>
           <div class="v2-stack-row"><span>Services</span><strong>systemd user units</strong></div>
-          <div class="v2-stack-row"><span>Linting</span><strong>Ruff + Mypy</strong></div>
-          <div class="v2-stack-row"><span>Tests</span><strong>pytest + asyncio</strong></div>
         </div>
+        <p style="margin-top:1.2rem;font-size:.84rem;color:var(--text-ter);text-align:center">
+          <a class="inline-link" href="vera.html">Meet Vera →</a>
+        </p>
       </div>
+    </section>
+
+    <!-- ─── Where this is going ───────────────────────────────────────── -->
+    <section class="container v2-section">
+      <div class="v2-section-intro reveal">
+        <p class="v2-label">Roadmap</p>
+        <h2 class="v2-section-title">Where this is going</h2>
+        <p class="v2-section-sub">Stability before scale. We build operator trust before expanding capabilities.</p>
+      </div>
+      <div class="where-grid stagger-children">
+        <article class="wt-card reveal">
+          <span class="wt-badge now">Now · Solid</span>
+          <h3>Operator-grade baseline</h3>
+          <ul>
+            <li>Queue railguard: lifecycle, prune, reconcile</li>
+            <li>Daemon reliability: single-writer lock, graceful shutdown</li>
+            <li>HITL approval gating + structured audit bundles</li>
+          </ul>
+        </article>
+        <article class="wt-card reveal">
+          <span class="wt-badge next">Next · v0.1.6</span>
+          <h3>Security + visibility hardening</h3>
+          <ul>
+            <li>Panel auth rate limiting + hardened endpoints</li>
+            <li>Ops health dashboard in panel</li>
+            <li>Health degradation signals + backoff</li>
+          </ul>
+        </article>
+        <article class="wt-card reveal">
+          <span class="wt-badge later">Later · v0.3</span>
+          <h3>Voice stack</h3>
+          <ul>
+            <li>STT/TTS integration</li>
+            <li>Wake word detection: "Hey Voxera"</li>
+            <li>Voice-first command loop</li>
+          </ul>
+        </article>
+      </div>
+      <p style="text-align:center;margin-top:1.5rem">
+        <a class="inline-link" href="roadmap.html">View full roadmap →</a>
+      </p>
     </section>
 
     <!-- ─── Waitlist ───────────────────────────────────────────────────── -->
@@ -179,11 +260,11 @@ pruned: 4 artifacts  ·  freed: 2.1 MB</code></pre>
       <div class="v2-waitlist reveal">
         <div class="v2-waitlist-badge">
           <span class="pulse-dot pulse-dot-lg"></span>
-          Not open to the public
+          Invite only
         </div>
-        <h2 class="v2-waitlist-title">Voxera OS is invite only.</h2>
+        <h2 class="v2-waitlist-title">Ready to run Voxera OS?</h2>
         <p class="v2-waitlist-sub">
-          We're running a tight private alpha with a small group of operators. Sign up for the waitlist and we'll reach out when your spot opens.
+          We're running a private alpha with a small group of operators. Sign up and we'll reach out when your spot opens — or <a class="inline-link" href="quickstart.html">go straight to Quick Start</a> if you already have access.
         </p>
         <form class="v2-waitlist-form" id="waitlist-form">
           <input
@@ -191,7 +272,7 @@ pruned: 4 artifacts  ·  freed: 2.1 MB</code></pre>
             placeholder="your@email.com" required autocomplete="email"
             aria-label="Email address for waitlist"
           />
-          <button type="submit" class="btn btn-primary" id="waitlist-submit">Request Access</button>
+          <button type="submit" class="btn btn-primary" id="waitlist-submit">Join Waitlist</button>
         </form>
         <p class="v2-waitlist-fine">No spam. No obligations. We'll reach out when your spot is ready.</p>
       </div>
@@ -203,12 +284,14 @@ pruned: 4 artifacts  ·  freed: 2.1 MB</code></pre>
     <div class="container">
       <div>
         <strong>Voxera OS</strong>
-        <p>Alpha v0.1.5 · AI Control Plane · Invite Only</p>
+        <p>Alpha · AI Control Plane · Invite Only</p>
       </div>
       <div class="footer-links">
         <a href="features.html">Features</a>
+        <a href="vera.html">Vera</a>
+        <a href="usecases.html">Use Cases</a>
         <a href="quickstart.html">Quick Start</a>
-        <a href="docs.html">Docs</a>
+        <a href="docs.html">Operator Guide</a>
         <a href="roadmap.html">Roadmap</a>
       </div>
     </div>

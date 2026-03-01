@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meet Vera — the core AI persona inside Voxera OS. Vera plans, routes, and executes within the constraints you set: policy-gated, approval-required, deterministic." />
+  <title>Voxera OS — Meet Vera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+</head>
+<body data-page="vera">
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header glass">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Voxera OS home">
+        <span class="brand-orb"></span>
+        <span>Voxera <em>OS</em></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="vera.html">Vera</a>
+        <a href="usecases.html">Use Cases</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Operator Guide</a>
+        <a href="roadmap.html">Roadmap</a>
+      </nav>
+      <a class="btn-nav-cta" href="index.html#waitlist">Join Waitlist</a>
+    </div>
+  </header>
+
+  <main class="page-main container">
+
+    <!-- ─── Hero ──────────────────────────────────────────────────────── -->
+    <section class="page-hero center reveal">
+      <div class="vera-badge">Core AI Persona</div>
+      <h1>Meet Vera</h1>
+      <p class="lede" style="text-align:center;max-width:52ch">
+        Vera is the AI mind inside Voxera OS. She plans, routes, and executes — always within the constraints you set. She isn't a chatbot. She's a structured task planner constrained by policy, approval gates, and deterministic prompt ordering.
+      </p>
+      <p style="margin-top:1.2rem;font-size:1.05rem;color:var(--accent);font-weight:600;font-style:italic">
+        "Vera asks before she acts."
+      </p>
+    </section>
+
+    <!-- ─── How Vera stays grounded ───────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Reliability constraints</p>
+        <h2>How Vera stays grounded</h2>
+      </div>
+      <div class="vera-grounded-grid stagger-children">
+        <article class="card glow-card reveal">
+          <div class="v2-pillar-icon icon-box" style="margin-bottom:.75rem"></div>
+          <h3>Capabilities snapshot</h3>
+          <p>Vera operates within a declared capability snapshot. She can't use tools, network access, or system resources that aren't explicitly permitted by operator policy — even if asked.</p>
+        </article>
+        <article class="card glow-card reveal">
+          <div class="v2-pillar-icon icon-lock" style="margin-bottom:.75rem"></div>
+          <h3>Policy + approval gate</h3>
+          <p>Every risky action goes through the approval gate before execution. Vera surfaces the reason and scope; the operator decides allow or deny. No action bypasses the gate.</p>
+        </article>
+        <article class="card glow-card reveal">
+          <div class="v2-pillar-icon icon-log" style="margin-bottom:.75rem"></div>
+          <h3>Deterministic prompt ordering</h3>
+          <p>Vera's planning loop uses a fixed prompt structure — no improvisation on the system prompt. The planning context is traceable and inspectable via artifact bundles.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── What Vera can do today ────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Today</p>
+        <h2>What Vera can do right now</h2>
+      </div>
+      <div class="vera-capability-grid stagger-children">
+        <article class="card reveal">
+          <h3>Write notes and daily check-ins</h3>
+          <p>Queue a natural language goal — "Write a daily check-in with priorities and blockers" — and Vera structures a note, writes it, and records the artifact. No free-form improvisation.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Run system status checks</h3>
+          <p>System status missions query your environment and return a structured summary. Vera uses the <code>system.status</code> skill — no ad-hoc shell execution.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Queue and route structured missions</h3>
+          <p>Vera can plan a multi-step mission from a high-level goal, break it into steps, and route each step through the approval gate before executing.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Classify brain fallback reasons</h3>
+          <p>When a provider fails, Vera classifies why — TIMEOUT, AUTH, RATE_LIMIT, MALFORMED, NETWORK — and surfaces the reason in <code>voxera queue health</code> and <code>voxera doctor</code>.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Generate incident bundles</h3>
+          <p>On request, Vera packages queue state, job artifacts, and system snapshot into a structured handoff folder — ready for review or escalation.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Follow approval-gated automation</h3>
+          <p>Vera executes structured workflows where each risky step is explicitly approved by the operator before it runs — no batch auto-approval.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── What Vera will become ─────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Planned</p>
+        <h2>What Vera will become</h2>
+      </div>
+      <div class="grid three stagger-children">
+        <article class="card reveal">
+          <h3>Voice loop</h3>
+          <p>Respond to "Hey Voxera" and handle voice-first commands through the same approval-gated queue. STT/TTS integration planned for v0.3.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Richer mission planning</h3>
+          <p>Structured planning previews with explicit operator confirmation pathways — see exactly what Vera intends to do before any step runs.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Signed skill catalog</h3>
+          <p>Signed skill bundles so operators know exactly what Vera is allowed to do — and can verify it. No unsigned skill execution.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Engineering details accordion ────────────────────────────── -->
+    <section class="section reveal">
+      <div class="card">
+        <h3 style="margin-bottom:.5rem">Under the hood</h3>
+        <p style="color:var(--text-sec);font-size:.9rem">Vera is built on a tiered brain system with deterministic fallback handling and structured prompt ordering. The planning loop is inspectable via artifact bundles.</p>
+        <details class="eng-details">
+          <summary>Engineering details — brain architecture</summary>
+          <div class="eng-body">
+            <p><strong>Brain tier system:</strong> primary, fast, reasoning, fallback — each independently configurable per provider. OpenRouter, Gemini, OpenAI-compatible, and local Ollama are all supported.</p>
+            <p style="margin-top:.6rem"><strong>Fallback classification:</strong> when a provider fails, the failure reason is classified into one of: <code>TIMEOUT</code>, <code>AUTH</code>, <code>RATE_LIMIT</code>, <code>MALFORMED</code>, <code>NETWORK</code>, <code>UNKNOWN</code>. The reason persists in <code>health.json</code> and surfaces in <code>voxera queue health</code>.</p>
+            <p style="margin-top:.6rem"><strong>Prompt ordering:</strong> Vera's planning loop uses a fixed prompt structure. The system prompt, capability snapshot, and job context are composed in deterministic order. No runtime improvisation on the system prompt.</p>
+            <p style="margin-top:.6rem"><strong>Fast path:</strong> common write operations (note writes, file writes) use a deterministic fast-path that emits exactly one <code>files.write_text</code> step — no cloud planning required.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ─── CTA ───────────────────────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="cta-band">
+        <div>
+          <p class="eyebrow">See Vera in action</p>
+          <h2>Run the 5-minute demo</h2>
+          <p style="color:var(--text-sec);margin-top:.4rem">Queue a job, watch Vera plan it, approve the execution, and inspect the audit artifact — in a single <code>voxera demo</code> session.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="quickstart.html">Quick Start</a>
+          <a class="btn btn-outline" href="usecases.html">Real-world use cases</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <strong>Voxera OS</strong>
+        <p>Alpha · AI Control Plane</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="usecases.html">Use Cases</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Operator Guide</a>
+        <a href="roadmap.html">Roadmap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Voxera OS Use Cases — Incident response, daily ops check-ins, safe automations, queue monitoring, and lab operator workflows." />
+  <title>Voxera OS — Use Cases</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+</head>
+<body data-page="usecases">
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header glass">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Voxera OS home">
+        <span class="brand-orb"></span>
+        <span>Voxera <em>OS</em></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="vera.html">Vera</a>
+        <a href="usecases.html">Use Cases</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Operator Guide</a>
+        <a href="roadmap.html">Roadmap</a>
+      </nav>
+      <a class="btn-nav-cta" href="index.html#waitlist">Join Waitlist</a>
+    </div>
+  </header>
+
+  <main class="page-main container">
+
+    <section class="page-hero reveal">
+      <p class="eyebrow">Use Cases</p>
+      <h1>What operators build with Voxera OS</h1>
+      <p class="lede">Real-world operator workflows where approval gating, structured audit artifacts, and deterministic behavior aren't optional — they're the point.</p>
+    </section>
+
+    <!-- ─── Use case 1: Incident response ─────────────────────────────── -->
+    <section class="section reveal">
+      <article class="usecase-card">
+        <p class="uc-tag">Incident response</p>
+        <h2>Assembling incident documentation automatically</h2>
+        <div class="uc-flow">
+          <div class="uc-step problem">
+            <strong>Problem</strong>
+            After an incident, assembling logs, queue state, job timelines, and system state takes hours of manual work — often under pressure.
+          </div>
+          <div class="uc-step approach">
+            <strong>Voxera approach</strong>
+            Queue an incident bundle job. Vera collects queue state, job artifacts, system snapshot, and packages everything into a structured handoff folder with one command.
+          </div>
+          <div class="uc-step outcome">
+            <strong>Outcome</strong>
+            A structured, schema-consistent incident bundle ready in seconds — with full audit trail of what ran, when, and what was approved.
+          </div>
+        </div>
+        <p style="margin-top:1rem;font-size:.83rem;color:var(--text-ter)">
+          Key commands: <code>voxera ops bundle system</code> · <code>voxera ops bundle job &lt;job_id&gt;</code>
+        </p>
+      </article>
+    </section>
+
+    <!-- ─── Use case 2: Daily ops check-ins ───────────────────────────── -->
+    <section class="section reveal">
+      <article class="usecase-card">
+        <p class="uc-tag">Daily operations</p>
+        <h2>Consistent daily ops check-ins and reporting</h2>
+        <div class="uc-flow">
+          <div class="uc-step problem">
+            <strong>Problem</strong>
+            Consistent daily reporting is time-consuming to write from scratch, easy to skip, and hard to standardize across different operators.
+          </div>
+          <div class="uc-step approach">
+            <strong>Voxera approach</strong>
+            Queue a daily check-in mission. Vera writes a structured note with system status, recent queue activity, open approvals, and blockers — then surfaces the artifact for review.
+          </div>
+          <div class="uc-step outcome">
+            <strong>Outcome</strong>
+            A consistent daily written record the operator can review, edit, and archive — with no AI making decisions autonomously.
+          </div>
+        </div>
+        <p style="margin-top:1rem;font-size:.83rem;color:var(--text-ter)">
+          Key command: <code>voxera inbox add "Write a daily check-in note with priorities and blockers"</code>
+        </p>
+      </article>
+    </section>
+
+    <!-- ─── Use case 3: Safe installs ─────────────────────────────────── -->
+    <section class="section reveal">
+      <article class="usecase-card">
+        <p class="uc-tag">Safe automation</p>
+        <h2>Software installs with explicit approval gates</h2>
+        <div class="uc-flow">
+          <div class="uc-step problem">
+            <strong>Problem</strong>
+            Automated install scripts run silently, bypass review, and create audit gaps. When something goes wrong, there's no structured record of what ran.
+          </div>
+          <div class="uc-step approach">
+            <strong>Voxera approach</strong>
+            Queue an install job with explicit scope declared. Vera plans the steps; each install action gates on operator approval before running. No step executes without sign-off.
+          </div>
+          <div class="uc-step outcome">
+            <strong>Outcome</strong>
+            Every install is explicitly approved, timestamped, and artifact-logged — with a schema-versioned failure sidecar if anything goes wrong.
+          </div>
+        </div>
+        <p style="margin-top:1rem;font-size:.83rem;color:var(--text-ter)">
+          Gate: <code>voxera queue approvals approve &lt;job_id&gt;</code> · Audit: <code>notes/queue/artifacts/&lt;job_id&gt;/</code>
+        </p>
+      </article>
+    </section>
+
+    <!-- ─── Use case 4: Queue health monitoring ───────────────────────── -->
+    <section class="section reveal">
+      <article class="usecase-card">
+        <p class="uc-tag">Observability</p>
+        <h2>Queue health monitoring before failures cascade</h2>
+        <div class="uc-flow">
+          <div class="uc-step problem">
+            <strong>Problem</strong>
+            Silent queue failures cause stale jobs that nobody notices — until something breaks downstream and the root cause is buried in logs.
+          </div>
+          <div class="uc-step approach">
+            <strong>Voxera approach</strong>
+            Schedule queue health snapshots. Vera surfaces brain fallback reasons, lock status, and quarantined jobs in structured output — before they become incidents.
+          </div>
+          <div class="uc-step outcome">
+            <strong>Outcome</strong>
+            Predictable queue state with classified failure reasons and no silent accumulation of stale or stuck jobs.
+          </div>
+        </div>
+        <p style="margin-top:1rem;font-size:.83rem;color:var(--text-ter)">
+          Key commands: <code>voxera queue health</code> · <code>voxera doctor</code> · <code>voxera queue reconcile</code>
+        </p>
+      </article>
+    </section>
+
+    <!-- ─── Use case 5: Lab/IT operator workflows ──────────────────────── -->
+    <section class="section reveal">
+      <article class="usecase-card">
+        <p class="uc-tag">Lab &amp; IT operations</p>
+        <h2>Repeatable operator workflows without unpredictable AI behavior</h2>
+        <div class="uc-flow">
+          <div class="uc-step problem">
+            <strong>Problem</strong>
+            Automating repetitive ops tasks with AI introduces unpredictable behavior, loss of control, and no clear audit trail when something deviates from expectations.
+          </div>
+          <div class="uc-step approach">
+            <strong>Voxera approach</strong>
+            Define structured missions with explicit approval gates. Operators run the same workflow repeatedly — each with the same deterministic planning path and the same predictable approval flow.
+          </div>
+          <div class="uc-step outcome">
+            <strong>Outcome</strong>
+            Repeatable, auditable ops automation that operators can trust, review, and extend — without worrying about what the AI decided to do differently this time.
+          </div>
+        </div>
+        <p style="margin-top:1rem;font-size:.83rem;color:var(--text-ter)">
+          Foundation: deterministic queue lifecycle · capabilities snapshot constraints · structured audit bundles
+        </p>
+      </article>
+    </section>
+
+    <!-- ─── CTA ───────────────────────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="cta-band">
+        <div>
+          <p class="eyebrow">Try it yourself</p>
+          <h2>Run your first workflow in 5 minutes</h2>
+          <p style="color:var(--text-sec);margin-top:.4rem">Start with <code>voxera demo</code> to see the queue, approval, and audit flow end-to-end — then adapt it to your own workflow.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="quickstart.html">Quick Start</a>
+          <a class="btn btn-outline" href="vera.html">Meet Vera</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <strong>Voxera OS</strong>
+        <p>Alpha · AI Control Plane</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="vera.html">Vera</a>
+        <a href="quickstart.html">Quick Start</a>
+        <a href="docs.html">Operator Guide</a>
+        <a href="roadmap.html">Roadmap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
