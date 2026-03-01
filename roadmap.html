@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS Roadmap — User-visible milestones after the Alpha v0.1.5 baseline." />
+  <meta name="description" content="Voxera OS Roadmap — Now: operator-grade baseline. Next: v0.1.6 security hardening. Later: voice stack and Hey Voxera." />
   <title>Voxera OS — Roadmap</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,8 +24,10 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
+        <a href="vera.html">Vera</a>
+        <a href="usecases.html">Use Cases</a>
         <a href="quickstart.html">Quick Start</a>
-        <a href="docs.html">Docs</a>
+        <a href="docs.html">Operator Guide</a>
         <a href="roadmap.html">Roadmap</a>
       </nav>
       <a class="btn-nav-cta" href="index.html#waitlist">Join Waitlist</a>
@@ -35,56 +37,80 @@
   <main class="page-main container">
 
     <section class="page-hero reveal">
-      <p class="eyebrow">Roadmap · After v0.1.5</p>
-      <h1>What comes after the Alpha baseline</h1>
-      <p class="lede">Alpha v0.1.5 locks in operator-grade artifact hygiene on top of a solid daily-driver foundation. The next milestones focus on reliability signals, safer planning previews, and stronger provider behavior before broader voice expansion.</p>
+      <p class="eyebrow">Roadmap</p>
+      <h1>Where Voxera OS is headed</h1>
+      <p class="lede">Stability before scale. We build operator trust before adding capabilities. The alpha establishes the control structure that makes everything else safe to ship.</p>
     </section>
 
+    <!-- ─── 3-card roadmap ────────────────────────────────────────────── -->
     <section class="section reveal">
+      <div class="roadmap-grid stagger-children">
+        <article class="roadmap-card reveal">
+          <span class="rm-badge solid">Now · Solid</span>
+          <h2>Operator-grade baseline</h2>
+          <ul>
+            <li>Queue railguard: deterministic lifecycle, prune, reconcile</li>
+            <li>Human-in-the-loop approval gating + structured audit bundles</li>
+            <li>Daemon reliability: single-writer lock, graceful shutdown, startup recovery</li>
+          </ul>
+        </article>
+        <article class="roadmap-card reveal">
+          <span class="rm-badge next">Next · v0.1.6</span>
+          <h2>Security + visibility hardening</h2>
+          <ul>
+            <li>Panel auth rate limiting + hardened endpoints</li>
+            <li>Ops health dashboard in panel</li>
+            <li>Health degradation signals + backoff</li>
+          </ul>
+        </article>
+        <article class="roadmap-card reveal">
+          <span class="rm-badge later">Later · v0.3</span>
+          <h2>Voice stack</h2>
+          <ul>
+            <li>STT/TTS integration</li>
+            <li>Wake word detection: "Hey Voxera"</li>
+            <li>Voice-first command loop</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── More milestones ───────────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Additional milestones</p>
+        <h2>Beyond v0.1.6</h2>
+      </div>
       <div class="timeline">
         <article class="timeline-item reveal">
-          <span class="time-badge">Near-term</span>
-          <h2>Panel auth hardening &amp; graceful daemon shutdown</h2>
-          <p>Rate limiting on panel auth endpoints and clean SIGTERM handling in the queue daemon for production-grade service reliability.</p>
-        </article>
-        <article class="timeline-item reveal">
-          <span class="time-badge">Near-term</span>
-          <h2>Brain fallback error classification in voxera doctor</h2>
-          <p>Surface brain fallback reason enums (TIMEOUT, AUTH, RATE_LIMIT, MALFORMED, NETWORK) directly in the doctor output for faster diagnosis.</p>
-        </article>
-        <article class="timeline-item reveal">
-          <span class="time-badge">Next 4 weeks</span>
+          <span class="time-badge">v0.1.6 · near-term</span>
           <h2>Structured mission planning previews</h2>
-          <p>Richer dry-run simulation UX with explicit operator confirmation pathways and clearer capability usage summaries before committing to a plan.</p>
+          <p>Richer dry-run simulation with explicit operator confirmation pathways and clearer capability usage summaries before committing to a plan.</p>
         </article>
         <article class="timeline-item reveal">
-          <span class="time-badge">Next 8 weeks</span>
-          <h2>Provider behavior hardening &amp; mission catalog expansion</h2>
-          <p>Stronger OpenAI-compatible and Ollama provider behavior, improved fallback chain handling, and a broader mission catalog with 10+ built-in workflows.</p>
+          <span class="time-badge">v0.2 · mid-term</span>
+          <h2>Provider hardening + mission catalog expansion</h2>
+          <p>Stronger OpenAI-compatible and Ollama provider behavior, improved fallback chain handling, and a mission catalog with 10+ built-in workflows.</p>
         </article>
         <article class="timeline-item reveal">
-          <span class="time-badge">v0.3</span>
-          <h2>Voice stack</h2>
-          <p>STT/TTS integration, wake word detection, and a voice-first command loop. The "Hey Voxera" experience becomes real.</p>
-        </article>
-        <article class="timeline-item reveal">
-          <span class="time-badge">v0.4</span>
-          <h2>Signed skills, marketplace &amp; image packaging</h2>
+          <span class="time-badge">v0.4 · later</span>
+          <h2>Signed skills + marketplace</h2>
           <p>Signed skill bundles, a community skill marketplace, and ISO/image packaging for clean machine provisioning.</p>
         </article>
       </div>
     </section>
 
+    <!-- ─── Alpha positioning ─────────────────────────────────────────── -->
     <section class="section reveal">
       <div class="cta-band">
         <div>
           <p class="eyebrow">Alpha positioning</p>
-          <h2>Trustworthy baseline before broader expansion</h2>
-          <p style="color:var(--text-sec);margin-top:.4rem">Alpha v0.1.5 is intentionally focused: stable queue operations, operator-grade hygiene, and strong safety gates — built to be relied on daily, not just demoed.</p>
+          <h2>Trustworthy before ambitious</h2>
+          <p style="color:var(--text-sec);margin-top:.4rem">The alpha establishes the control structure — reliable queue, approval gating, audit artifacts, and safe daemon behavior — before we expand capabilities. Everything that comes after builds on this.</p>
         </div>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="features.html">See Feature Details</a>
-          <a class="btn btn-outline" href="docs.html">Read Ops Contracts</a>
+          <a class="btn btn-primary" href="features.html">What's solid today</a>
+          <a class="btn btn-outline" href="quickstart.html">Run the demo</a>
         </div>
       </div>
     </section>
@@ -95,13 +121,14 @@
     <div class="container">
       <div>
         <strong>Voxera OS</strong>
-        <p>Alpha v0.1.5 · AI Control Plane</p>
+        <p>Alpha · AI Control Plane</p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
+        <a href="vera.html">Vera</a>
         <a href="quickstart.html">Quick Start</a>
-        <a href="docs.html">Docs</a>
+        <a href="docs.html">Operator Guide</a>
       </div>
     </div>
   </footer>
