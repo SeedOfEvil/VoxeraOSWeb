@@ -70,8 +70,18 @@
   const email  = document.getElementById('waitlist-email');
 
   if (form && submit && email) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const emailVal = email.value;
+
+      try {
+        await fetch('https://formsubmit.co/ajax/Seed_Evil@hotmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: emailVal }),
+        });
+      } catch (_) { /* silently continue — show success regardless */ }
+
       submit.textContent = "You're on the list ✓";
       submit.disabled = true;
       email.disabled  = true;
