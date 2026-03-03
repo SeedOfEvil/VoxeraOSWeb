@@ -1,6 +1,9 @@
 (() => {
   'use strict';
 
+  /* ── Reduced motion check ────────────────────────────────────────── */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   /* ── Mobile nav ───────────────────────────────────────────────────── */
   const nav    = document.getElementById('site-nav');
   const toggle = document.querySelector('.nav-toggle');
@@ -40,7 +43,7 @@
       try {
         await navigator.clipboard.writeText(text);
         const prev = btn.textContent;
-        btn.textContent = 'Copied ✓';
+        btn.textContent = 'Copied';
         btn.classList.add('copied');
         setTimeout(() => {
           btn.textContent = prev;
@@ -53,16 +56,21 @@
   });
 
   /* ── Scroll reveal ────────────────────────────────────────────────── */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target); // fire once
-      }
-    });
-  }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+  if (!prefersReducedMotion) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
 
-  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  } else {
+    // Immediately show all reveals when reduced motion is preferred
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+  }
 
   /* ── Waitlist form ────────────────────────────────────────────────── */
   const form   = document.getElementById('waitlist-form');
@@ -82,7 +90,7 @@
         });
       } catch (_) { /* silently continue — show success regardless */ }
 
-      submit.textContent = "You're on the list ✓";
+      submit.textContent = "You're on the list";
       submit.disabled = true;
       email.disabled  = true;
       submit.style.background   = '#1a7f45';
@@ -96,6 +104,12 @@
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
+
+  // Skip canvas animation when reduced motion is preferred
+  if (prefersReducedMotion) {
+    canvas.style.display = 'none';
+    return;
+  }
 
   let W = 0, H = 0;
   let dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -113,11 +127,11 @@
   resize();
   window.addEventListener('resize', resize, { passive: true });
 
-  // Soft floating orbs — Apple-style ambient gradient, very subtle on white
+  // Soft floating orbs — Apple-style ambient gradient
   const orbs = [
-    { x: 0.15, y: 0.0,  vx:  0.00015, vy: 0.00010, r: 0.52, color: 'rgba(94,92,230,.055)'  },
-    { x: 0.80, y: 0.25, vx: -0.00012, vy: 0.00008,  r: 0.40, color: 'rgba(139,92,246,.04)' },
-    { x: 0.50, y: 0.80, vx:  0.00010, vy: -0.00012, r: 0.45, color: 'rgba(52,199,89,.04)'  },
+    { x: 0.15, y: 0.0,  vx:  0.00015, vy: 0.00010, r: 0.52, color: 'rgba(94,92,230,.045)'  },
+    { x: 0.80, y: 0.25, vx: -0.00012, vy: 0.00008,  r: 0.40, color: 'rgba(139,92,246,.035)' },
+    { x: 0.50, y: 0.80, vx:  0.00010, vy: -0.00012, r: 0.45, color: 'rgba(52,199,89,.03)'   },
   ];
 
   let t = 0;
@@ -140,7 +154,7 @@
 
       const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rd);
       g.addColorStop(0,   orb.color);
-      g.addColorStop(0.5, orb.color.replace(/[\d.]+\)$/, '0.015)'));
+      g.addColorStop(0.5, orb.color.replace(/[\d.]+\)$/, '0.012)'));
       g.addColorStop(1,   'rgba(0,0,0,0)');
 
       ctx.fillStyle = g;
