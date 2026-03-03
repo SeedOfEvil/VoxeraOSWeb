@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS Roadmap — Now: operator-grade baseline. Next: v0.1.6 security hardening. Later: voice stack and Hey Voxera." />
+  <meta name="description" content="Voxera OS Roadmap — v0.1.6 shipped with security and visibility. Next: Recovery Inspector. Coming: Long-run resilience." />
   <title>Voxera OS — Roadmap</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,63 +39,117 @@
     <section class="page-hero reveal">
       <p class="eyebrow">Roadmap</p>
       <h1>Where Voxera OS is headed</h1>
-      <p class="lede">Stability before scale. We build operator trust before adding capabilities. The alpha establishes the control structure that makes everything else safe to ship.</p>
+      <p class="lede">Stability before scale. We build operator trust before expanding capabilities. Here's what we've shipped, what's next, and where we're going.</p>
     </section>
 
-    <!-- ─── 3-card roadmap ────────────────────────────────────────────── -->
-    <section class="section reveal">
-      <div class="roadmap-grid stagger-children">
-        <article class="roadmap-card reveal">
-          <span class="rm-badge solid">Now · Solid</span>
-          <h2>Operator-grade baseline</h2>
-          <ul>
-            <li>Queue railguard: deterministic lifecycle, prune, reconcile</li>
-            <li>Human-in-the-loop approval gating + structured audit bundles</li>
-            <li>Daemon reliability: single-writer lock, graceful shutdown, startup recovery</li>
-          </ul>
-        </article>
-        <article class="roadmap-card reveal">
-          <span class="rm-badge next">Next · v0.1.6</span>
-          <h2>Security + visibility hardening</h2>
-          <ul>
-            <li>Panel auth rate limiting + hardened endpoints</li>
-            <li>Ops health dashboard in panel</li>
-            <li>Health degradation signals + backoff</li>
-          </ul>
-        </article>
-        <article class="roadmap-card reveal">
-          <span class="rm-badge later">Later · v0.3</span>
-          <h2>Voice stack</h2>
-          <ul>
-            <li>STT/TTS integration</li>
-            <li>Wake word detection: "Hey Voxera"</li>
-            <li>Voice-first command loop</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─── More milestones ───────────────────────────────────────────── -->
+    <!-- ─── Shipped: v0.1.6 ─────────────────────────────────────────── -->
     <section class="section reveal">
       <div class="section-head">
-        <p class="eyebrow">Additional milestones</p>
-        <h2>Beyond v0.1.6</h2>
+        <p class="eyebrow">Now available</p>
+        <h2>Shipped in v0.1.6</h2>
       </div>
-      <div class="timeline">
-        <article class="timeline-item reveal">
-          <span class="time-badge">v0.1.6 · near-term</span>
-          <h2>Structured mission planning previews</h2>
-          <p>Richer dry-run simulation with explicit operator confirmation pathways and clearer capability usage summaries before committing to a plan.</p>
+      <div class="roadmap-grid stagger-children">
+        <article class="roadmap-card rm-shipped reveal">
+          <span class="rm-badge shipped">Shipped</span>
+          <h2>Security and control</h2>
+          <ul>
+            <li>Input guardrails handle large or hostile inputs safely with clear limits</li>
+            <li>Prompt boundaries keep user content structurally separated from system instructions</li>
+            <li>Panel access protection with rate-limited operator authentication</li>
+          </ul>
         </article>
-        <article class="timeline-item reveal">
-          <span class="time-badge">v0.2 · mid-term</span>
-          <h2>Provider hardening + mission catalog expansion</h2>
-          <p>Stronger OpenAI-compatible and Ollama provider behavior, improved fallback chain handling, and a mission catalog with 10+ built-in workflows.</p>
+        <article class="roadmap-card rm-shipped reveal">
+          <span class="rm-badge shipped">Shipped</span>
+          <h2>Operator panel visibility</h2>
+          <ul>
+            <li>Health at a glance — see runtime status on the panel home</li>
+            <li>Hygiene tools — preview cleanup safely and run consistency checks</li>
+            <li>Last run results visible directly in the panel</li>
+          </ul>
         </article>
-        <article class="timeline-item reveal">
-          <span class="time-badge">v0.4 · later</span>
-          <h2>Signed skills + marketplace</h2>
-          <p>Signed skill bundles, a community skill marketplace, and ISO/image packaging for clean machine provisioning.</p>
+        <article class="roadmap-card rm-shipped full-width reveal">
+          <span class="rm-badge shipped">Shipped</span>
+          <h2>Reliability and smoothness</h2>
+          <ul>
+            <li>Smoother, more predictable approval flow — reduced friction, no dead-ends</li>
+            <li>More consistent execution input handling — fewer intermittent failures, clearer messages</li>
+            <li>Provider attribution displays VoxeraOS properly everywhere</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Next up ─────────────────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Immediate next milestone</p>
+        <h2>Next up: Recovery Inspector</h2>
+      </div>
+      <div class="roadmap-grid">
+        <article class="roadmap-card rm-next full-width reveal">
+          <span class="rm-badge next">Next up</span>
+          <h2>Recovery and quarantine inspector</h2>
+          <ul>
+            <li>Dedicated panel view for inspecting recovery and quarantine sessions</li>
+            <li>Download bundles directly from the panel for triage and review</li>
+            <li>Clear visibility into what was quarantined and why</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Coming after ────────────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Near-term</p>
+        <h2>Coming after: Long-run resilience</h2>
+      </div>
+      <div class="roadmap-grid stagger-children">
+        <article class="roadmap-card rm-coming reveal">
+          <span class="rm-badge coming">Coming</span>
+          <h2>Degradation awareness</h2>
+          <ul>
+            <li>Runtime becomes self-aware of sustained failures</li>
+            <li>Surfaces degradation state clearly to operators</li>
+            <li>No silent degradation — you always know the system's true state</li>
+          </ul>
+        </article>
+        <article class="roadmap-card rm-coming reveal">
+          <span class="rm-badge coming">Coming</span>
+          <h2>Intelligent backoff</h2>
+          <ul>
+            <li>Automatic backoff when providers are failing or rate-limiting</li>
+            <li>Clear shutdown and exit context in health surfaces</li>
+            <li>Graceful handling of extended provider outages</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Future ──────────────────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Future · post v0.1.6</p>
+        <h2>On the horizon</h2>
+      </div>
+      <div class="roadmap-grid stagger-children">
+        <article class="roadmap-card rm-future reveal">
+          <span class="rm-badge future">Future</span>
+          <h2>Platform expansion</h2>
+          <ul>
+            <li>Provider profiles and advanced configuration</li>
+            <li>Skills validation and broader capability coverage</li>
+            <li>Advanced rate limiting and usage controls</li>
+          </ul>
+        </article>
+        <article class="roadmap-card rm-future reveal">
+          <span class="rm-badge future">Future</span>
+          <h2>Voice and marketplace</h2>
+          <ul>
+            <li>Voice loop expansion — "Hey Voxera" wake word</li>
+            <li>Signed skills marketplace for community contributions</li>
+            <li>Release and packaging improvements</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -104,13 +158,13 @@
     <section class="section reveal">
       <div class="cta-band">
         <div>
-          <p class="eyebrow">Alpha positioning</p>
+          <p class="eyebrow">Our philosophy</p>
           <h2>Trustworthy before ambitious</h2>
-          <p style="color:var(--text-sec);margin-top:.4rem">The alpha establishes the control structure — reliable queue, approval gating, audit artifacts, and safe daemon behavior — before we expand capabilities. Everything that comes after builds on this.</p>
+          <p style="color:var(--text-sec);margin-top:.4rem">The alpha establishes the control structure — reliable execution, approval gating, audit records, and safe defaults — before we expand capabilities. Everything that comes after builds on this foundation.</p>
         </div>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="features.html">What's solid today</a>
-          <a class="btn btn-outline" href="quickstart.html">Run the demo</a>
+          <a class="btn btn-primary" href="features.html">What's shipped today</a>
+          <a class="btn btn-outline" href="quickstart.html">Get started</a>
         </div>
       </div>
     </section>
@@ -121,7 +175,7 @@
     <div class="container">
       <div>
         <strong>Voxera OS</strong>
-        <p>Alpha · AI Control Plane</p>
+        <p>Alpha v0.1.6 · AI Control Plane</p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>

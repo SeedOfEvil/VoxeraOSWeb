@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS — the operator-grade AI control plane for Linux. Queue-driven. Approval-gated. Audited. Deterministic." />
+  <meta name="description" content="Voxera OS — the operator-grade AI control plane for Linux. Safe by design. Approval-gated. Audited. Now shipping Alpha v0.1.6." />
   <title>Voxera OS — AI Control Plane for Linux</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,74 +40,94 @@
     <section class="v2-hero container">
       <div class="v2-invite-badge reveal">
         <span class="pulse-dot"></span>
-        Invite only · Alpha v0.1.5
+        Alpha v0.1.6 · Now Shipping
       </div>
       <h1 class="v2-headline reveal delay-1">
-        The operator-grade<br>
-        <span class="gradient-text">AI control plane for Linux.</span>
+        AI that asks<br>
+        <span class="gradient-text">before it acts.</span>
       </h1>
       <p class="v2-lede reveal delay-2">
-        Queue-driven. Approval-gated. Audited. Deterministic.<br class="br-lg">
-        Voxera OS puts a policy layer between you and your AI — so every action is intentional, traceable, and safe to run daily.
+        Voxera OS puts a policy layer between you and your AI.<br class="br-lg">
+        Every action is intentional, every decision is traceable, and every outcome is safe to run daily.
       </p>
       <div class="v2-cta-row reveal delay-3">
-        <a class="btn btn-primary btn-lg" href="quickstart.html">Run the 5-minute demo</a>
-        <a class="btn btn-ghost btn-lg" href="features.html">Read how it works</a>
-      </div>
-      <div class="v2-name-row reveal delay-4">
-        <span class="v2-pill">OS: Voxera OS</span>
-        <span class="v2-pill">Core AI: Vera</span>
-        <span class="v2-pill">CLI: <code>voxera</code></span>
-        <span class="v2-pill muted">Wake word (planned): "Hey Voxera"</span>
+        <a class="btn btn-primary btn-lg" href="docs.html">Operator Guide</a>
+        <a class="btn btn-ghost btn-lg" href="roadmap.html">View Roadmap</a>
+        <a class="btn btn-outline btn-lg" href="quickstart.html">Get Started</a>
       </div>
     </section>
 
-    <!-- ─── Proof snippet + demo toggle ──────────────────────────────── -->
-    <section class="container v2-terminal-section reveal">
-      <div class="v2-terminal" style="max-width:640px;margin-inline:auto">
-        <div class="v2-terminal-bar">
-          <span class="dot-r"></span>
-          <span class="dot-y"></span>
-          <span class="dot-g"></span>
-          <span class="v2-terminal-title">voxera demo</span>
-        </div>
-        <pre class="v2-terminal-body"><code><span class="tc-dim">$</span> voxera demo
-<span class="tc-green">✓</span> Queue healthy  ·  Daemon running  ·  Demo job queued  ·  Awaiting approval</code></pre>
+    <!-- ─── What's new in v0.1.6 — Feature chips ─────────────────────── -->
+    <section class="container v2-section">
+      <div class="v2-section-intro reveal">
+        <p class="v2-label">What's new in v0.1.6</p>
+        <h2 class="v2-section-title">Built for operators who need certainty.</h2>
+        <p class="v2-section-sub">Seven capabilities that make Voxera OS safe and predictable for daily use.</p>
       </div>
-      <div style="text-align:center;margin-top:1rem">
-        <details class="show-details" style="display:inline-block">
-          <summary>Show demo commands</summary>
-          <div class="show-details-body">
-            <div class="v2-terminal" style="max-width:640px;margin-inline:auto;text-align:left">
-              <div class="v2-terminal-bar">
-                <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-                <span class="v2-terminal-title">full demo walkthrough</span>
-              </div>
-              <pre class="v2-terminal-body"><code><span class="tc-dim"># 1. Install</span>
-python3 -m venv .venv &amp;&amp; source .venv/bin/activate
-pip install -e ".[dev]" &amp;&amp; make services-install
+      <div class="chip-grid stagger-children">
+        <div class="chip reveal">
+          <span class="chip-icon ci-shield">🛡</span>
+          Guardrails by design
+        </div>
+        <div class="chip reveal">
+          <span class="chip-icon ci-flow">✓</span>
+          Smooth approvals
+        </div>
+        <div class="chip reveal">
+          <span class="chip-icon ci-eye">👁</span>
+          Operator clarity
+        </div>
+        <div class="chip reveal">
+          <span class="chip-icon ci-wrench">🔧</span>
+          Panel hygiene tools
+        </div>
+        <div class="chip reveal">
+          <span class="chip-icon ci-check">⚡</span>
+          Reliable execution
+        </div>
+        <div class="chip reveal">
+          <span class="chip-icon ci-audit">📋</span>
+          Clear audit trail
+        </div>
+        <div class="chip reveal">
+          <span class="chip-icon ci-provider">🏷</span>
+          Provider attribution
+        </div>
+      </div>
+    </section>
 
-<span class="tc-dim"># 2. Run the demo (bootstraps queue + daemon)</span>
-voxera demo
-
-<span class="tc-dim"># 3. Queue a job manually</span>
-<span class="tc-dim">$</span> voxera inbox add "Write a daily check-in note"
-queued → <span class="tc-blue">notes/queue/inbox/job-1748.json</span>
-
-<span class="tc-dim"># 4. Process + approve</span>
-<span class="tc-dim">$</span> voxera daemon --once
-<span class="tc-dim">$</span> voxera queue approvals list
-<span class="tc-dim">$</span> voxera queue approvals approve &lt;job_id&gt;
-
-<span class="tc-dim"># 5. Health check</span>
-<span class="tc-dim">$</span> voxera queue status
-queue: <span class="tc-green">healthy</span>  ·  done: 1  ·  failed: 0  ·  approvals: 0</code></pre>
-            </div>
-            <p style="margin-top:.75rem;font-size:.82rem;color:var(--text-ter);text-align:center">
-              For complete run instructions, <a class="inline-link" href="docs.html">read the Operator Guide</a>.
-            </p>
-          </div>
-        </details>
+    <!-- ─── How it works — Workflow graphic ───────────────────────────── -->
+    <section class="container v2-section">
+      <div class="v2-section-intro reveal">
+        <p class="v2-label">How it works</p>
+        <h2 class="v2-section-title">From intent to outcome. Five steps.</h2>
+        <p class="v2-section-sub">Every action follows the same path. No shortcuts, no surprises.</p>
+      </div>
+      <div class="workflow reveal">
+        <div class="workflow-step">
+          <div class="workflow-dot shimmer">💬</div>
+          <span class="workflow-label">Intent</span>
+        </div>
+        <span class="workflow-arrow">→</span>
+        <div class="workflow-step">
+          <div class="workflow-dot shimmer">📐</div>
+          <span class="workflow-label">Policy</span>
+        </div>
+        <span class="workflow-arrow">→</span>
+        <div class="workflow-step">
+          <div class="workflow-dot shimmer">✋</div>
+          <span class="workflow-label">Approval</span>
+        </div>
+        <span class="workflow-arrow">→</span>
+        <div class="workflow-step">
+          <div class="workflow-dot shimmer">⚙️</div>
+          <span class="workflow-label">Execute</span>
+        </div>
+        <span class="workflow-arrow">→</span>
+        <div class="workflow-step">
+          <div class="workflow-dot shimmer">📋</div>
+          <span class="workflow-label">Audit</span>
+        </div>
       </div>
     </section>
 
@@ -122,48 +142,17 @@ queue: <span class="tc-green">healthy</span>  ·  done: 1  ·  failed: 0  ·  ap
         <article class="does-card reveal">
           <div class="does-icon blue">📥</div>
           <h3>Turn intent into jobs</h3>
-          <p>Natural language goals become structured queue jobs. The daemon processes them deterministically — one at a time, with a full audit trail.</p>
+          <p>Natural language goals become structured jobs. Each one is processed predictably, one at a time, with a full record of what happened.</p>
         </article>
         <article class="does-card reveal">
           <div class="does-icon purple">🔒</div>
           <h3>Gate risk with approvals</h3>
-          <p>Risky actions require explicit operator sign-off. Policy decides allow, ask, or deny at runtime. No job bypasses the gate.</p>
+          <p>Actions that carry risk require your explicit sign-off. Policy decides what needs approval at runtime. Nothing bypasses the gate.</p>
         </article>
         <article class="does-card reveal">
           <div class="does-icon green">📋</div>
           <h3>Prove what happened</h3>
-          <p>Every job emits a structured bundle: mission plan, action timeline, stdout, stderr, and schema-versioned failure sidecars.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─── Why operators trust it — 5 trust cards ───────────────────── -->
-    <section class="container v2-section">
-      <div class="v2-section-intro reveal">
-        <p class="v2-label">Why operators trust it</p>
-        <h2 class="v2-section-title">Reliability isn't a feature. It's the foundation.</h2>
-        <p class="v2-section-sub">Five shipped behaviors that make Voxera OS safe to run as a daily driver, not just a demo.</p>
-      </div>
-      <div class="trust-grid stagger-children">
-        <article class="trust-card reveal">
-          <h3>Deterministic queue lifecycle</h3>
-          <p>Cancel, retry, prune, and reconcile — every bucket is inspectable and cleanable. No silent state transitions, ever.</p>
-        </article>
-        <article class="trust-card reveal">
-          <h3>Single-writer daemon lock + safe restart</h3>
-          <p>One writer at a time. Graceful SIGTERM handling ensures the daemon shuts down cleanly, never corrupting queue state on restart.</p>
-        </article>
-        <article class="trust-card reveal">
-          <h3>Startup recovery + quarantine</h3>
-          <p>Ambiguous jobs on startup go to quarantine — not silently re-run. No double-execution, no mystery failures on daemon restart.</p>
-        </article>
-        <article class="trust-card reveal">
-          <h3>Brain fallback classification</h3>
-          <p>When AI falls back, you see exactly why: TIMEOUT, AUTH, RATE_LIMIT, MALFORMED, NETWORK, or UNKNOWN — never a silent failure.</p>
-        </article>
-        <article class="trust-card reveal">
-          <h3>Non-destructive setup wizard</h3>
-          <p>Keep, skip, or replace — per-provider. The setup wizard never overwrites existing configuration without asking first.</p>
+          <p>Every job produces a structured record: the plan, the actions taken, and the outcome. Complete traceability, every time.</p>
         </article>
       </div>
     </section>
@@ -173,27 +162,27 @@ queue: <span class="tc-green">healthy</span>  ·  done: 1  ·  failed: 0  ·  ap
       <div class="reveal">
         <p class="v2-label">Architecture</p>
         <h2 class="v2-section-title-sm">Three layers.<br>One coherent system.</h2>
-        <p class="v2-section-sub">Voxera OS runs alongside your Linux — not in place of it. The substrate stays standard. You stay in control.</p>
+        <p class="v2-section-sub">Voxera OS runs alongside your Linux — not in place of it. Your system stays standard. You stay in control.</p>
         <div class="v2-layers">
           <div class="v2-layer">
             <span class="v2-layer-num">01</span>
             <div>
-              <strong>Substrate OS</strong>
-              <p>Your Linux stays standard. Ubuntu, Fedora, or any distribution. Voxera sits alongside it — never replacing drivers, filesystem, or networking.</p>
+              <strong>Your Linux</strong>
+              <p>Ubuntu, Fedora, or any distribution. Voxera sits alongside it — never replacing your system foundations.</p>
             </div>
           </div>
           <div class="v2-layer">
             <span class="v2-layer-num">02</span>
             <div>
               <strong>AI Control Plane</strong>
-              <p>Vera routes your intent through policy-aware queues, cloud planning, and approval gates. This is Voxera OS — the layer that makes AI trustworthy.</p>
+              <p>Your intent flows through policy-aware processing, approval gates, and structured execution. This is what makes AI trustworthy.</p>
             </div>
           </div>
           <div class="v2-layer">
             <span class="v2-layer-num">03</span>
             <div>
               <strong>Experience Layer</strong>
-              <p>CLI today, voice tomorrow. Operators start with <code>voxera</code> CLI and the web panel — and grow into "Hey Voxera" when voice ships.</p>
+              <p>Command line today, operator panel for visibility, and voice control on the horizon.</p>
             </div>
           </div>
         </div>
@@ -201,53 +190,42 @@ queue: <span class="tc-green">healthy</span>  ·  done: 1  ·  failed: 0  ·  ap
       <div class="reveal delay-2">
         <div class="v2-stack">
           <p class="v2-stack-title">Built on</p>
-          <div class="v2-stack-row"><span>Language</span><strong>Python ≥ 3.10</strong></div>
-          <div class="v2-stack-row"><span>CLI + UI</span><strong>Typer + Rich</strong></div>
-          <div class="v2-stack-row"><span>Web panel</span><strong>FastAPI + Uvicorn</strong></div>
-          <div class="v2-stack-row"><span>AI backends</span><strong>Gemini, OpenAI-compat, Ollama</strong></div>
-          <div class="v2-stack-row"><span>Sandbox</span><strong>Podman rootless</strong></div>
-          <div class="v2-stack-row"><span>Services</span><strong>systemd user units</strong></div>
+          <div class="v2-stack-row"><span>Runtime</span><strong>Python 3.10+</strong></div>
+          <div class="v2-stack-row"><span>Interface</span><strong>CLI + Web Panel</strong></div>
+          <div class="v2-stack-row"><span>AI Providers</span><strong>Gemini, OpenAI, Ollama</strong></div>
+          <div class="v2-stack-row"><span>Isolation</span><strong>Rootless containers</strong></div>
         </div>
         <p style="margin-top:1.2rem;font-size:.84rem;color:var(--text-ter);text-align:center">
-          <a class="inline-link" href="vera.html">Meet Vera →</a>
+          <a class="inline-link" href="vera.html">Meet Vera, the AI core →</a>
         </p>
       </div>
     </section>
 
-    <!-- ─── Where this is going ───────────────────────────────────────── -->
+    <!-- ─── Progress — Shipped / Next / Coming ─────────────────────────── -->
     <section class="container v2-section">
       <div class="v2-section-intro reveal">
-        <p class="v2-label">Roadmap</p>
-        <h2 class="v2-section-title">Where this is going</h2>
+        <p class="v2-label">Progress</p>
+        <h2 class="v2-section-title">Where we are, where we're going.</h2>
         <p class="v2-section-sub">Stability before scale. We build operator trust before expanding capabilities.</p>
       </div>
-      <div class="where-grid stagger-children">
-        <article class="wt-card reveal">
-          <span class="wt-badge now">Now · Solid</span>
-          <h3>Operator-grade baseline</h3>
-          <ul>
-            <li>Queue railguard: lifecycle, prune, reconcile</li>
-            <li>Daemon reliability: single-writer lock, graceful shutdown</li>
-            <li>HITL approval gating + structured audit bundles</li>
-          </ul>
+      <div class="progress-track stagger-children">
+        <article class="progress-card shipped reveal">
+          <span class="progress-badge shipped-badge">
+            <span class="pulse-dot" style="width:5px;height:5px"></span>
+            Shipped · v0.1.6
+          </span>
+          <h3>Security, visibility, and reliability</h3>
+          <p>Input guardrails, smooth approvals, operator panel with health and hygiene tools, consistent execution, and proper provider attribution.</p>
         </article>
-        <article class="wt-card reveal">
-          <span class="wt-badge next">Next · v0.1.6</span>
-          <h3>Security + visibility hardening</h3>
-          <ul>
-            <li>Panel auth rate limiting + hardened endpoints</li>
-            <li>Ops health dashboard in panel</li>
-            <li>Health degradation signals + backoff</li>
-          </ul>
+        <article class="progress-card next-up reveal">
+          <span class="progress-badge next-badge">Next up</span>
+          <h3>Recovery Inspector</h3>
+          <p>A dedicated panel view to inspect recovery sessions, review quarantined items, and download bundles for triage.</p>
         </article>
-        <article class="wt-card reveal">
-          <span class="wt-badge later">Later · v0.3</span>
-          <h3>Voice stack</h3>
-          <ul>
-            <li>STT/TTS integration</li>
-            <li>Wake word detection: "Hey Voxera"</li>
-            <li>Voice-first command loop</li>
-          </ul>
+        <article class="progress-card coming reveal">
+          <span class="progress-badge coming-badge">Coming after</span>
+          <h3>Long-run resilience</h3>
+          <p>Degradation-aware runtime, intelligent backoff when providers struggle, and clear shutdown context in health surfaces.</p>
         </article>
       </div>
       <p style="text-align:center;margin-top:1.5rem">
@@ -284,7 +262,7 @@ queue: <span class="tc-green">healthy</span>  ·  done: 1  ·  failed: 0  ·  ap
     <div class="container">
       <div>
         <strong>Voxera OS</strong>
-        <p>Alpha · AI Control Plane · Invite Only</p>
+        <p>Alpha v0.1.6 · AI Control Plane · Invite Only</p>
       </div>
       <div class="footer-links">
         <a href="features.html">Features</a>
