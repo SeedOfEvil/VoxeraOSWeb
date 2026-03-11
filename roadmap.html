@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS Roadmap — v0.1.6 shipped with security and visibility. Next: Recovery Inspector. Coming: Long-run resilience." />
-  <title>Voxera OS — Roadmap</title>
+  <meta name="description" content="VoxeraOS Roadmap — v0.1.7 ships governed queue execution, approval gates, artifact-backed outcomes, and baseline recovery. Next: richer Recovery Inspector UI." />
+  <title>VoxeraOS — Roadmap</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,42 +38,42 @@
 
     <section class="page-hero reveal">
       <p class="eyebrow">Roadmap</p>
-      <h1>Where Voxera OS is headed</h1>
+      <h1>Where VoxeraOS is headed</h1>
       <p class="lede">Stability before scale. We build operator trust before expanding capabilities. Here's what we've shipped, what's next, and where we're going.</p>
     </section>
 
-    <!-- ─── Shipped: v0.1.6 ─────────────────────────────────────────── -->
+    <!-- ─── Shipped: v0.1.7 ─────────────────────────────────────────── -->
     <section class="section reveal">
       <div class="section-head">
         <p class="eyebrow">Now available</p>
-        <h2>Shipped in v0.1.6</h2>
+        <h2>Shipped in v0.1.7</h2>
       </div>
       <div class="roadmap-grid stagger-children">
         <article class="roadmap-card rm-shipped reveal">
           <span class="rm-badge shipped">Shipped</span>
-          <h2>Security and control</h2>
+          <h2>Governed queue execution</h2>
           <ul>
-            <li>Input guardrails handle large or hostile inputs safely with clear limits</li>
-            <li>Prompt boundaries keep user content structurally separated from system instructions</li>
-            <li>Panel access protection with rate-limited operator authentication</li>
+            <li>Durable filesystem-backed queue with explicit job lifecycle (inbox → pending → running → done)</li>
+            <li>Approval gates that pause execution — jobs wait until operator explicitly allows them</li>
+            <li>Artifact-backed outcomes — every job produces evidence of what requested, allowed, executed, and resulted</li>
           </ul>
         </article>
         <article class="roadmap-card rm-shipped reveal">
           <span class="rm-badge shipped">Shipped</span>
-          <h2>Operator panel visibility</h2>
+          <h2>Security, visibility, and baseline recovery</h2>
           <ul>
-            <li>Health at a glance — see runtime status on the panel home</li>
-            <li>Hygiene tools — preview cleanup safely and run consistency checks</li>
-            <li>Last run results visible directly in the panel</li>
+            <li>Input guardrails, prompt boundaries, and rate-limited panel access protection</li>
+            <li>Operator panel: health at a glance, hygiene tools, last run results</li>
+            <li>Baseline recovery directories, quarantine buckets, and incident bundles operational</li>
           </ul>
         </article>
         <article class="roadmap-card rm-shipped full-width reveal">
           <span class="rm-badge shipped">Shipped</span>
-          <h2>Reliability and smoothness</h2>
+          <h2>Vera / VoxeraOS separation and reliability</h2>
           <ul>
+            <li>Clear separation between Vera (conversational surface) and VoxeraOS (governed execution runtime)</li>
             <li>Smoother, more predictable approval flow — reduced friction, no dead-ends</li>
-            <li>More consistent execution input handling — fewer intermittent failures, clearer messages</li>
-            <li>Provider attribution displays VoxeraOS properly everywhere</li>
+            <li>Deterministic prompt ordering, brain fallback classification, and consistent input handling</li>
           </ul>
         </article>
       </div>
@@ -83,16 +83,16 @@
     <section class="section reveal">
       <div class="section-head">
         <p class="eyebrow">Immediate next milestone</p>
-        <h2>Next up: Recovery Inspector</h2>
+        <h2>Next up: Recovery Inspector UI</h2>
       </div>
       <div class="roadmap-grid">
         <article class="roadmap-card rm-next full-width reveal">
           <span class="rm-badge next">Next up</span>
-          <h2>Recovery and quarantine inspector</h2>
+          <h2>Richer recovery and quarantine inspection</h2>
           <ul>
-            <li>Dedicated panel view for inspecting recovery and quarantine sessions</li>
-            <li>Download bundles directly from the panel for triage and review</li>
-            <li>Clear visibility into what was quarantined and why</li>
+            <li>Baseline recovery directories, quarantine buckets, and incident bundles are already in v0.1.7</li>
+            <li>Next milestone: dedicated panel view for inspecting recovery sessions and quarantined items visually</li>
+            <li>Download incident bundles directly from the panel — richer triage and visualization tooling</li>
           </ul>
         </article>
       </div>
@@ -129,7 +129,7 @@
     <!-- ─── Future ──────────────────────────────────────────────────── -->
     <section class="section reveal">
       <div class="section-head">
-        <p class="eyebrow">Future · post v0.1.6</p>
+        <p class="eyebrow">Future · post v0.1.7</p>
         <h2>On the horizon</h2>
       </div>
       <div class="roadmap-grid stagger-children">
@@ -174,8 +174,8 @@
   <footer class="site-footer">
     <div class="container">
       <div>
-        <strong>Voxera OS</strong>
-        <p>Alpha v0.1.6 · AI Control Plane</p>
+        <strong>VoxeraOS</strong>
+        <p>v0.1.7 · Governed AI Execution Runtime</p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>

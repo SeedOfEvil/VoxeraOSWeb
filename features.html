@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS Features — Three pillars of operator-grade AI: guardrails and governance, operator experience, and reliable execution." />
-  <title>Voxera OS — Features</title>
+  <meta name="description" content="VoxeraOS Features — Governed queue execution, approval gates, artifact-backed outcomes, operator visibility, and baseline recovery. v0.1.7." />
+  <title>VoxeraOS — Features</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -37,22 +37,37 @@
   <main class="page-main container">
 
     <section class="page-hero reveal">
-      <p class="eyebrow">Capabilities · v0.1.6</p>
-      <h1>Three pillars of operator-grade AI</h1>
-      <p class="lede">Voxera OS is built stability-first. Every capability serves a single purpose: give operators confidence that AI is doing exactly what they asked — nothing more, nothing less.</p>
+      <p class="eyebrow">Capabilities · v0.1.7</p>
+      <h1>Governed execution, operator visibility, and reliable recovery</h1>
+      <p class="lede">VoxeraOS is built stability-first. Every capability serves a single purpose: give operators confidence that AI is doing exactly what they asked — through a governed queue, with approval gates, and a full artifact record.</p>
     </section>
 
-    <!-- ─── Pillar 1: Guardrails & governance ─────────────────────────── -->
+    <!-- ─── Pillar 1: Governed execution ─────────────────────────────── -->
     <section class="pillar-section reveal">
       <div class="pillar-header">
         <div class="pillar-num">1</div>
         <div>
-          <p class="eyebrow">Shipped in v0.1.6</p>
-          <h2>Guardrails and governance</h2>
+          <p class="eyebrow">Shipped in v0.1.7</p>
+          <h2>Governed execution and queue architecture</h2>
         </div>
       </div>
-      <p class="pillar-desc">Safety isn't an add-on — it's the foundation. Voxera OS enforces boundaries at every layer, so operators can trust that AI stays within the lines they set.</p>
+      <p class="pillar-desc">The queue is the execution trust boundary. Natural language becomes a durable queue job. Every side-effecting action is policy-evaluated, approval-gated, and artifact-backed — before anything runs.</p>
       <div class="benefit-grid stagger-children">
+        <article class="benefit-card reveal">
+          <div class="benefit-icon">📥</div>
+          <h3>Durable queue lifecycle</h3>
+          <p>Jobs move through an explicit lifecycle: inbox → pending → approval → running → done or failed. Every state transition is tracked and recoverable.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <div class="benefit-icon">✋</div>
+          <h3>Approval gates that pause execution</h3>
+          <p>When a job requires approval, execution stops. The job waits in pending approvals until an operator explicitly allows it. Nothing advances unilaterally.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <div class="benefit-icon">📋</div>
+          <h3>Artifact-backed outcomes</h3>
+          <p>Every completed job produces evidence: the plan, what policy allowed, what executed, and the outcome. Inspectable. Permanent. Provable.</p>
+        </article>
         <article class="benefit-card reveal">
           <div class="benefit-icon">🛡</div>
           <h3>Input guardrails</h3>
@@ -62,21 +77,6 @@
           <div class="benefit-icon">🔒</div>
           <h3>Prompt boundaries</h3>
           <p>User content is structurally separated from system instructions. No prompt confusion, no blurred lines between intent and control.</p>
-        </article>
-        <article class="benefit-card reveal">
-          <div class="benefit-icon">🔑</div>
-          <h3>Panel access protection</h3>
-          <p>Operator authentication is rate-limited to reduce brute-force risk. Access to the control panel stays secure by default.</p>
-        </article>
-        <article class="benefit-card reveal">
-          <div class="benefit-icon">✋</div>
-          <h3>Predictable approvals</h3>
-          <p>Risky actions require your explicit sign-off. Policy decides what needs approval at runtime. Nothing bypasses the gate.</p>
-        </article>
-        <article class="benefit-card reveal">
-          <div class="benefit-icon">📋</div>
-          <h3>Complete audit trail</h3>
-          <p>Every job produces a structured record of what was planned, what was executed, and what the outcome was. Full traceability.</p>
         </article>
         <article class="benefit-card reveal">
           <div class="benefit-icon">📦</div>
@@ -91,8 +91,8 @@
       <div class="pillar-header">
         <div class="pillar-num">2</div>
         <div>
-          <p class="eyebrow">Shipped + Next up</p>
-          <h2>Operator experience</h2>
+          <p class="eyebrow">Shipped in v0.1.7 + Next up</p>
+          <h2>Operator visibility and recovery</h2>
         </div>
       </div>
       <p class="pillar-desc">Operators deserve clarity, not complexity. The web panel gives you a real-time view of system health and tools to keep things running cleanly.</p>
@@ -109,8 +109,8 @@
         </article>
         <article class="benefit-card reveal">
           <div class="benefit-icon">🔍</div>
-          <h3>Recovery Inspector <span style="font-size:.68rem;font-weight:700;color:var(--accent);vertical-align:middle;margin-left:.3rem">NEXT UP</span></h3>
-          <p>A dedicated panel view to inspect recovery sessions, review quarantined items, and download bundles for triage. Coming next.</p>
+          <h3>Recovery and quarantine <span style="font-size:.68rem;font-weight:700;color:var(--text-ter);vertical-align:middle;margin-left:.3rem">BASELINE IN v0.1.7</span></h3>
+          <p>Baseline recovery directories, quarantine buckets, and incident bundles are operational in v0.1.7. A richer Recovery Inspector panel view with triage UI is coming next.</p>
         </article>
       </div>
     </section>
@@ -120,11 +120,11 @@
       <div class="pillar-header">
         <div class="pillar-num">3</div>
         <div>
-          <p class="eyebrow">Shipped in v0.1.6</p>
+          <p class="eyebrow">Shipped in v0.1.7</p>
           <h2>Reliable execution</h2>
         </div>
       </div>
-      <p class="pillar-desc">Reliability isn't a feature — it's the foundation. Every improvement in v0.1.6 reduces friction and makes outcomes more predictable.</p>
+      <p class="pillar-desc">Reliability isn't a feature — it's the foundation. Consistent execution, smooth approval flows, and accurate attribution make outcomes predictable and auditable.</p>
       <div class="benefit-grid stagger-children">
         <article class="benefit-card reveal">
           <div class="benefit-icon">✓</div>
@@ -149,7 +149,7 @@
       <div class="not-just">
         <p class="eyebrow">Philosophy</p>
         <h2>Not just automation.</h2>
-        <p>Most AI tools execute blindly. Voxera OS adds four layers that make AI accountable — so every action has intent, boundaries, approval, and a record.</p>
+        <p>Most AI systems connect reasoning directly to tool execution. VoxeraOS introduces a governed execution layer between Vera's reasoning and real-world actions — so every action has intent, policy boundaries, an approval gate, and a permanent record.</p>
         <div class="not-just-grid stagger-children">
           <div class="not-just-item reveal">
             <div class="nj-icon">💬</div>
@@ -195,8 +195,8 @@
   <footer class="site-footer">
     <div class="container">
       <div>
-        <strong>Voxera OS</strong>
-        <p>Alpha v0.1.6 · AI Control Plane</p>
+        <strong>VoxeraOS</strong>
+        <p>v0.1.7 · Governed AI Execution Runtime</p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
