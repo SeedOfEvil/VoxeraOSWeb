@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS Operator Guide — Panel tour, safety defaults, and operational reference for running Voxera OS with confidence." />
-  <title>Voxera OS — Operator Guide</title>
+  <meta name="description" content="VoxeraOS Operator Guide — Panel tour, safety defaults, and operational reference for running VoxeraOS with confidence." />
+  <title>VoxeraOS — Operator Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -37,9 +37,9 @@
   <main class="page-main container">
 
     <section class="page-hero reveal">
-      <p class="eyebrow">Operator Guide · v0.1.6</p>
+      <p class="eyebrow">Operator Guide · v0.1.7</p>
       <h1>Your panel, your way</h1>
-      <p class="lede">A practical reference for operators running Voxera OS. Tour the panel, understand the safety defaults, and learn how to keep your system running cleanly.</p>
+      <p class="lede">A practical reference for operators running VoxeraOS. Tour the panel, understand the safety defaults, manage the governed queue, and learn how to keep your system running cleanly.</p>
     </section>
 
     <!-- ─── Quick navigation tiles ──────────────────────────────────── -->
@@ -58,7 +58,7 @@
         <a class="doc-tile reveal" href="#safe-defaults">
           <p class="doc-tile-label">Safety</p>
           <h3>Safe by default</h3>
-          <p>How Voxera OS keeps your system protected: approval gates, isolated execution, and non-destructive operations.</p>
+          <p>How VoxeraOS keeps your system protected: approval gates, governed queue execution, isolated execution, and non-destructive operations.</p>
           <span class="doc-tile-arrow">Read section →</span>
         </a>
         <a class="doc-tile reveal" href="#operations">
@@ -70,7 +70,7 @@
         <a class="doc-tile reveal" href="roadmap.html">
           <p class="doc-tile-label">Roadmap</p>
           <h3>What's shipped and what's next</h3>
-          <p>See the full v0.1.6 shipped feature set, plus what's coming next: Recovery Inspector and long-run resilience.</p>
+          <p>See the full v0.1.7 shipped feature set, plus what's coming next: richer Recovery Inspector UI and long-run resilience.</p>
           <span class="doc-tile-arrow">View roadmap →</span>
         </a>
       </div>
@@ -126,7 +126,7 @@
         </div>
         <div class="safe-block reveal">
           <h3>Boundaries you can trust</h3>
-          <p>Every layer of Voxera OS enforces boundaries. From input handling to execution isolation, safety isn't optional — it's structural.</p>
+          <p>Every layer of VoxeraOS enforces boundaries. From input handling to queue governance to execution isolation, safety isn't optional — it's structural.</p>
           <ul class="safe-list">
             <li>Approval gates on risky actions — no silent auto-approvals</li>
             <li>Isolated execution in rootless containers</li>
@@ -206,7 +206,7 @@ voxera ops bundle job &lt;job_id&gt;</code></pre>
         <div>
           <p class="eyebrow">What's next</p>
           <h2>See what's shipped and what's coming</h2>
-          <p style="color:var(--text-sec);margin-top:.4rem">v0.1.6 is live with security, visibility, and reliability improvements. Next up: Recovery Inspector for the operator panel.</p>
+          <p style="color:var(--text-sec);margin-top:.4rem">v0.1.7 is live with governed queue execution, approval gates, artifact-backed outcomes, and baseline recovery. Next up: richer Recovery Inspector UI for the operator panel.</p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-primary" href="roadmap.html">View Roadmap</a>
@@ -220,8 +220,8 @@ voxera ops bundle job &lt;job_id&gt;</code></pre>
   <footer class="site-footer">
     <div class="container">
       <div>
-        <strong>Voxera OS</strong>
-        <p>Alpha v0.1.6 · AI Control Plane</p>
+        <strong>VoxeraOS</strong>
+        <p>v0.1.7 · Governed AI Execution Runtime</p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>

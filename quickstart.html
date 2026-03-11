@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS Quick Start — Run the demo, install in 3 steps, queue your first job, and get an approved result in under 5 minutes." />
-  <title>Voxera OS — Quick Start</title>
+  <meta name="description" content="VoxeraOS Quick Start — Start services, submit a governed queue job, approve if required, and inspect the artifact — in under 5 minutes." />
+  <title>VoxeraOS — Quick Start</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -37,9 +37,9 @@
   <main class="page-main container">
 
     <section class="page-hero reveal">
-      <p class="eyebrow">Get Started</p>
-      <h1>From zero to first approved job in 5 minutes</h1>
-      <p class="lede">The fastest path is <code>voxera demo</code>. It bootstraps the queue, runs a sample job, and walks you through your first approval — no pre-configuration required. For complete run instructions, <a class="inline-link" href="docs.html">read the Operator Guide</a>.</p>
+      <p class="eyebrow">Get Started · v0.1.7</p>
+      <h1>Submit your first governed job in 5 minutes</h1>
+      <p class="lede">The fastest path is <code>voxera demo</code>. It starts services, queues a sample job, walks you through your first approval, and lets you inspect the artifact — no pre-configuration required. For complete run instructions, <a class="inline-link" href="docs.html">read the Operator Guide</a>.</p>
     </section>
 
     <!-- ─── Fastest path: voxera demo ────────────────────────────────── -->
@@ -109,7 +109,7 @@ voxera queue status">Copy</button>
         <div class="qs-step reveal">
           <div class="step-num">3</div>
           <div class="qs-step-body">
-            <h3>Queue your first job + run</h3>
+            <h3>Submit a governed job and run</h3>
             <div class="code-block">
               <pre><code>voxera inbox add "Write a daily check-in note"
 voxera daemon --once
@@ -118,7 +118,7 @@ voxera queue approvals list</code></pre>
 voxera daemon --once
 voxera queue approvals list">Copy</button>
             </div>
-            <p>The daemon processes one job and stops. If an approval is needed, it shows up in <code>approvals list</code>.</p>
+            <p>The daemon processes one queue job and stops. If approval is required, the job waits in pending approvals. Approve it, run again, and inspect the artifact.</p>
           </div>
         </div>
       </div>
@@ -250,8 +250,8 @@ voxera queue reconcile">Copy</button>
   <footer class="site-footer">
     <div class="container">
       <div>
-        <strong>Voxera OS</strong>
-        <p>Alpha · AI Control Plane</p>
+        <strong>VoxeraOS</strong>
+        <p>v0.1.7 · Governed AI Execution Runtime</p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>

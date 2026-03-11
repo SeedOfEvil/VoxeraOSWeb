@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Meet Vera — the core AI persona inside Voxera OS. Vera plans, routes, and executes within the constraints you set: policy-gated, approval-required, deterministic." />
-  <title>Voxera OS — Meet Vera</title>
+  <meta name="description" content="Meet Vera — the conversational and planning surface inside VoxeraOS. Vera investigates, shapes intent, and prepares governed requests. VoxeraOS evaluates, approves, executes, and records." />
+  <title>VoxeraOS — Meet Vera</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,14 +38,25 @@
 
     <!-- ─── Hero ──────────────────────────────────────────────────────── -->
     <section class="page-hero center reveal">
-      <div class="vera-badge">Core AI Persona</div>
+      <div class="vera-badge">Conversational &amp; Planning Surface</div>
       <h1>Meet Vera</h1>
       <p class="lede" style="text-align:center;max-width:52ch">
-        Vera is the AI mind inside Voxera OS. She plans, routes, and executes — always within the constraints you set. She isn't a chatbot. She's a structured task planner constrained by policy, approval gates, and deterministic prompt ordering.
+        Vera is the conversational and planning surface inside VoxeraOS. She converses with you, investigates questions, shapes intent, and prepares governed requests for the VoxeraOS execution runtime. She does not directly mutate the system.
       </p>
       <p style="margin-top:1.2rem;font-size:1.05rem;color:var(--accent);font-weight:600;font-style:italic">
         "Vera asks before she acts."
       </p>
+    </section>
+
+    <!-- ─── Trust boundary callout ────────────────────────────────────── -->
+    <section class="section reveal">
+      <div class="card" style="background:var(--bg-alt);border-left:3px solid var(--accent);padding:1.5rem 1.75rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">The trust boundary</p>
+        <p style="font-size:1rem;line-height:1.6;color:var(--text-sec)">
+          <strong style="color:var(--text-pri)">Vera helps you think, prepare, and investigate.</strong> VoxeraOS asks, gates, executes, and records.<br>
+          Vera is the conversational surface. VoxeraOS is the governed execution and evidence layer. They are deliberately separate — and that separation is what makes AI actions trustworthy.
+        </p>
+      </div>
     </section>
 
     <!-- ─── How Vera stays grounded ───────────────────────────────────── -->
@@ -81,28 +92,28 @@
       </div>
       <div class="vera-capability-grid stagger-children">
         <article class="card reveal">
-          <h3>Write notes and daily check-ins</h3>
-          <p>Queue a natural language goal — "Write a daily check-in with priorities and blockers" — and Vera structures a note, writes it, and records the artifact. No free-form improvisation.</p>
+          <h3>Compose notes and daily check-ins</h3>
+          <p>Queue a natural language goal — "Write a daily check-in with priorities and blockers" — and Vera structures a governed write request. VoxeraOS executes it, records the artifact. No free-form improvisation.</p>
         </article>
         <article class="card reveal">
-          <h3>Run system status checks</h3>
-          <p>System status missions query your environment and return a structured summary. Vera uses the <code>system.status</code> skill — no ad-hoc shell execution.</p>
+          <h3>Investigate system status</h3>
+          <p>Status checks run through a read-only lane. Vera queries your environment using the <code>system.status</code> skill and returns a structured summary — no ad-hoc shell execution, no side effects.</p>
         </article>
         <article class="card reveal">
-          <h3>Queue and route structured missions</h3>
-          <p>Vera can plan a multi-step mission from a high-level goal, break it into steps, and route each step through the approval gate before executing.</p>
+          <h3>Plan and route structured missions</h3>
+          <p>Vera can plan a multi-step mission from a high-level goal, break it into steps, and hand each step to VoxeraOS — which evaluates policy, gates on approval if needed, and executes.</p>
         </article>
         <article class="card reveal">
           <h3>Classify brain fallback reasons</h3>
           <p>When a provider fails, Vera classifies why — TIMEOUT, AUTH, RATE_LIMIT, MALFORMED, NETWORK — and surfaces the reason in <code>voxera queue health</code> and <code>voxera doctor</code>.</p>
         </article>
         <article class="card reveal">
-          <h3>Generate incident bundles</h3>
-          <p>On request, Vera packages queue state, job artifacts, and system snapshot into a structured handoff folder — ready for review or escalation.</p>
+          <h3>Prepare incident bundles</h3>
+          <p>On request, Vera assembles queue state, job artifacts, and system snapshot into a structured handoff package — ready for operator review or escalation.</p>
         </article>
         <article class="card reveal">
-          <h3>Follow approval-gated automation</h3>
-          <p>Vera executes structured workflows where each risky step is explicitly approved by the operator before it runs — no batch auto-approval.</p>
+          <h3>Explain queue outcomes in natural language</h3>
+          <p>After VoxeraOS completes a job, Vera translates artifact data and structured logs into readable summaries for the operator — closing the loop on every governed action.</p>
         </article>
       </div>
     </section>
@@ -166,8 +177,8 @@
   <footer class="site-footer">
     <div class="container">
       <div>
-        <strong>Voxera OS</strong>
-        <p>Alpha · AI Control Plane</p>
+        <strong>VoxeraOS</strong>
+        <p>v0.1.7 · Governed AI Execution Runtime</p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>

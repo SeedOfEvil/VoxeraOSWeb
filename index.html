@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voxera OS — the operator-grade AI control plane for Linux. Safe by design. Approval-gated. Audited. Now shipping Alpha v0.1.6." />
-  <title>Voxera OS — AI Control Plane for Linux</title>
+  <meta name="description" content="VoxeraOS — a governed AI execution runtime. Natural language becomes durable queue jobs. Every action is policy-checked, approval-gated, and artifact-backed. v0.1.7, invite only." />
+  <title>VoxeraOS — Governed AI Execution Runtime</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -40,15 +40,15 @@
     <section class="v2-hero container">
       <div class="v2-invite-badge reveal">
         <span class="pulse-dot"></span>
-        Alpha v0.1.6 · Now Shipping
+        v0.1.7 · Invite Only
       </div>
       <h1 class="v2-headline reveal delay-1">
         AI that asks<br>
         <span class="gradient-text">before it acts.</span>
       </h1>
       <p class="v2-lede reveal delay-2">
-        Voxera OS puts a policy layer between you and your AI.<br class="br-lg">
-        Every action is intentional, every decision is traceable, and every outcome is safe to run daily.
+        VoxeraOS is a governed execution runtime that sits between an AI assistant and real system actions.<br class="br-lg">
+        Natural language becomes a durable queue job. Every action is policy-checked, approval-gated, and artifact-backed.
       </p>
       <div class="v2-cta-row reveal delay-3">
         <a class="btn btn-primary btn-lg" href="docs.html">Operator Guide</a>
@@ -57,42 +57,29 @@
       </div>
     </section>
 
-    <!-- ─── What's new in v0.1.6 — Feature chips ─────────────────────── -->
+    <!-- ─── Why Voxera Exists ─────────────────────────────────────────── -->
     <section class="container v2-section">
       <div class="v2-section-intro reveal">
-        <p class="v2-label">What's new in v0.1.6</p>
-        <h2 class="v2-section-title">Built for operators who need certainty.</h2>
-        <p class="v2-section-sub">Seven capabilities that make Voxera OS safe and predictable for daily use.</p>
+        <p class="v2-label">Why Voxera exists</p>
+        <h2 class="v2-section-title">AI can propose. Voxera decides.</h2>
+        <p class="v2-section-sub">Most AI systems operate like this: <strong>LLM → tool call</strong>. That's powerful, but hard to trust at scale.</p>
       </div>
-      <div class="chip-grid stagger-children">
-        <div class="chip reveal">
-          <span class="chip-icon ci-shield">🛡</span>
-          Guardrails by design
-        </div>
-        <div class="chip reveal">
-          <span class="chip-icon ci-flow">✓</span>
-          Smooth approvals
-        </div>
-        <div class="chip reveal">
-          <span class="chip-icon ci-eye">👁</span>
-          Operator clarity
-        </div>
-        <div class="chip reveal">
-          <span class="chip-icon ci-wrench">🔧</span>
-          Panel hygiene tools
-        </div>
-        <div class="chip reveal">
-          <span class="chip-icon ci-check">⚡</span>
-          Reliable execution
-        </div>
-        <div class="chip reveal">
-          <span class="chip-icon ci-audit">📋</span>
-          Clear audit trail
-        </div>
-        <div class="chip reveal">
-          <span class="chip-icon ci-provider">🏷</span>
-          Provider attribution
-        </div>
+      <div class="does-grid stagger-children">
+        <article class="does-card reveal">
+          <div class="does-icon blue">🤖</div>
+          <h3>Vera converses and plans</h3>
+          <p>Vera is the conversational surface. She helps you think, investigate, shape intent, and prepare governed requests — but she cannot directly mutate the system.</p>
+        </article>
+        <article class="does-card reveal">
+          <div class="does-icon purple">⚙️</div>
+          <h3>VoxeraOS governs execution</h3>
+          <p>Every side-effecting action passes through the VoxeraOS queue runtime — evaluated against policy, approval-gated if required, and executed with a full artifact record.</p>
+        </article>
+        <article class="does-card reveal">
+          <div class="does-icon green">📋</div>
+          <h3>Every action is provable</h3>
+          <p>Jobs produce evidence artifacts: what was requested, what policy allowed, what executed, and what the outcome was. You can prove exactly what happened and why.</p>
+        </article>
       </div>
     </section>
 
@@ -101,7 +88,7 @@
       <div class="v2-section-intro reveal">
         <p class="v2-label">How it works</p>
         <h2 class="v2-section-title">From intent to outcome. Five steps.</h2>
-        <p class="v2-section-sub">Every action follows the same path. No shortcuts, no surprises.</p>
+        <p class="v2-section-sub">Every governed action follows the same path through the queue. No shortcuts, no surprises.</p>
       </div>
       <div class="workflow reveal">
         <div class="workflow-step">
@@ -131,58 +118,58 @@
       </div>
     </section>
 
-    <!-- ─── What it does — 3 cards ───────────────────────────────────── -->
+    <!-- ─── Queue as execution boundary — proof strip ────────────────── -->
     <section class="container v2-section">
       <div class="v2-section-intro reveal">
-        <p class="v2-label">What Voxera OS does</p>
+        <p class="v2-label">The queue is the execution boundary</p>
         <h2 class="v2-section-title">AI should ask, not assume.</h2>
-        <p class="v2-section-sub">Three jobs. One coherent system. Every action stays inside the boundary you set.</p>
+        <p class="v2-section-sub">Natural language becomes a durable queue job. Jobs move through an explicit lifecycle. Every governed action produces evidence.</p>
       </div>
       <div class="does-grid stagger-children">
         <article class="does-card reveal">
           <div class="does-icon blue">📥</div>
-          <h3>Turn intent into jobs</h3>
-          <p>Natural language goals become structured jobs. Each one is processed predictably, one at a time, with a full record of what happened.</p>
+          <h3>Durable queue jobs</h3>
+          <p>Intent becomes a queue job with an explicit lifecycle: inbox → pending → approval → running → done. Each state transition is tracked and recoverable.</p>
         </article>
         <article class="does-card reveal">
-          <div class="does-icon purple">🔒</div>
-          <h3>Gate risk with approvals</h3>
-          <p>Actions that carry risk require your explicit sign-off. Policy decides what needs approval at runtime. Nothing bypasses the gate.</p>
+          <div class="does-icon purple">✋</div>
+          <h3>Approval gates that pause</h3>
+          <p>When a job requires approval, execution stops. The job waits in pending approvals until an operator explicitly allows it. Nothing advances on its own.</p>
         </article>
         <article class="does-card reveal">
           <div class="does-icon green">📋</div>
-          <h3>Prove what happened</h3>
-          <p>Every job produces a structured record: the plan, the actions taken, and the outcome. Complete traceability, every time.</p>
+          <h3>Artifact-backed outcomes</h3>
+          <p>Every completed job produces evidence: the plan, what policy allowed, what executed, and the outcome. Provable. Inspectable. Permanent.</p>
         </article>
       </div>
     </section>
 
-    <!-- ─── Three layers ──────────────────────────────────────────────── -->
+    <!-- ─── Architecture — Vera vs VoxeraOS ──────────────────────────── -->
     <section class="container v2-section v2-arch">
       <div class="reveal">
         <p class="v2-label">Architecture</p>
-        <h2 class="v2-section-title-sm">Three layers.<br>One coherent system.</h2>
-        <p class="v2-section-sub">Voxera OS runs alongside your Linux — not in place of it. Your system stays standard. You stay in control.</p>
+        <h2 class="v2-section-title-sm">Two distinct surfaces.<br>One trust boundary.</h2>
+        <p class="v2-section-sub">VoxeraOS separates the conversational assistant from the governed execution runtime. They are deliberately different things.</p>
         <div class="v2-layers">
           <div class="v2-layer">
             <span class="v2-layer-num">01</span>
             <div>
-              <strong>Your Linux</strong>
-              <p>Ubuntu, Fedora, or any distribution. Voxera sits alongside it — never replacing your system foundations.</p>
+              <strong>Vera — the conversational surface</strong>
+              <p>Vera converses, investigates, plans, and prepares governed handoffs. She shapes intent and explains results. She does not directly execute side-effecting system actions.</p>
             </div>
           </div>
           <div class="v2-layer">
             <span class="v2-layer-num">02</span>
             <div>
-              <strong>AI Control Plane</strong>
-              <p>Your intent flows through policy-aware processing, approval gates, and structured execution. This is what makes AI trustworthy.</p>
+              <strong>VoxeraOS — the governed execution runtime</strong>
+              <p>The durable queue runtime that evaluates requests against policy, pauses for approval when required, executes jobs, and produces artifact-backed evidence of every outcome.</p>
             </div>
           </div>
           <div class="v2-layer">
             <span class="v2-layer-num">03</span>
             <div>
-              <strong>Experience Layer</strong>
-              <p>Command line today, operator panel for visibility, and voice control on the horizon.</p>
+              <strong>Your Linux — unchanged</strong>
+              <p>Ubuntu, Fedora, or any distribution. VoxeraOS runs alongside it — never replacing your system foundations.</p>
             </div>
           </div>
         </div>
@@ -196,7 +183,7 @@
           <div class="v2-stack-row"><span>Isolation</span><strong>Rootless containers</strong></div>
         </div>
         <p style="margin-top:1.2rem;font-size:.84rem;color:var(--text-ter);text-align:center">
-          <a class="inline-link" href="vera.html">Meet Vera, the AI core →</a>
+          <a class="inline-link" href="vera.html">Meet Vera →</a>
         </p>
       </div>
     </section>
@@ -204,7 +191,7 @@
     <!-- ─── Progress — Shipped / Next / Coming ─────────────────────────── -->
     <section class="container v2-section">
       <div class="v2-section-intro reveal">
-        <p class="v2-label">Progress</p>
+        <p class="v2-label">Progress · v0.1.7</p>
         <h2 class="v2-section-title">Where we are, where we're going.</h2>
         <p class="v2-section-sub">Stability before scale. We build operator trust before expanding capabilities.</p>
       </div>
@@ -212,15 +199,15 @@
         <article class="progress-card shipped reveal">
           <span class="progress-badge shipped-badge">
             <span class="pulse-dot" style="width:5px;height:5px"></span>
-            Shipped · v0.1.6
+            Shipped · v0.1.7
           </span>
-          <h3>Security, visibility, and reliability</h3>
-          <p>Input guardrails, smooth approvals, operator panel with health and hygiene tools, consistent execution, and proper provider attribution.</p>
+          <h3>Governed execution, visibility, and baseline recovery</h3>
+          <p>Durable queue lifecycle, approval gates, artifact-backed outcomes, operator panel health, hygiene tools, input guardrails, and baseline recovery and quarantine surfaces.</p>
         </article>
         <article class="progress-card next-up reveal">
           <span class="progress-badge next-badge">Next up</span>
-          <h3>Recovery Inspector</h3>
-          <p>A dedicated panel view to inspect recovery sessions, review quarantined items, and download bundles for triage.</p>
+          <h3>Recovery Inspector UI</h3>
+          <p>A richer dedicated panel view for inspecting recovery sessions, reviewing quarantined items, and downloading incident bundles — building on the baseline recovery already in v0.1.7.</p>
         </article>
         <article class="progress-card coming reveal">
           <span class="progress-badge coming-badge">Coming after</span>
@@ -240,7 +227,7 @@
           <span class="pulse-dot pulse-dot-lg"></span>
           Invite only
         </div>
-        <h2 class="v2-waitlist-title">Ready to run Voxera OS?</h2>
+        <h2 class="v2-waitlist-title">Ready to run VoxeraOS?</h2>
         <p class="v2-waitlist-sub">
           We're running a private alpha with a small group of operators. Sign up and we'll reach out when your spot opens — or <a class="inline-link" href="quickstart.html">go straight to Quick Start</a> if you already have access.
         </p>
@@ -261,8 +248,8 @@
   <footer class="site-footer">
     <div class="container">
       <div>
-        <strong>Voxera OS</strong>
-        <p>Alpha v0.1.6 · AI Control Plane · Invite Only</p>
+        <strong>VoxeraOS</strong>
+        <p>v0.1.7 · Governed AI Execution Runtime · Invite Only</p>
       </div>
       <div class="footer-links">
         <a href="features.html">Features</a>
