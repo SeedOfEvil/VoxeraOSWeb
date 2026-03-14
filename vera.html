@@ -30,7 +30,7 @@
         <a href="docs.html">Operator Guide</a>
         <a href="roadmap.html">Roadmap</a>
       </nav>
-      <a class="btn-nav-cta" href="index.html#waitlist">Join Waitlist</a>
+      <a class="btn-nav-cta" href="index.html#waitlist">Request Invite</a>
     </div>
   </header>
 
@@ -148,7 +148,7 @@
         <details class="eng-details">
           <summary>Engineering details — brain architecture</summary>
           <div class="eng-body">
-            <p><strong>Brain tier system:</strong> primary, fast, reasoning, fallback — each independently configurable per provider. OpenRouter, Gemini, OpenAI-compatible, and local Ollama are all supported.</p>
+            <p><strong>Brain tier system:</strong> primary, fast, reasoning, fallback — each independently configurable per provider. OpenRouter is the finalized provider path today. Other provider integrations exist in the codebase but are not yet the settled public story.</p>
             <p style="margin-top:.6rem"><strong>Fallback classification:</strong> when a provider fails, the failure reason is classified into one of: <code>TIMEOUT</code>, <code>AUTH</code>, <code>RATE_LIMIT</code>, <code>MALFORMED</code>, <code>NETWORK</code>, <code>UNKNOWN</code>. The reason persists in <code>health.json</code> and surfaces in <code>voxera queue health</code>.</p>
             <p style="margin-top:.6rem"><strong>Prompt ordering:</strong> Vera's planning loop uses a fixed prompt structure. The system prompt, capability snapshot, and job context are composed in deterministic order. No runtime improvisation on the system prompt.</p>
             <p style="margin-top:.6rem"><strong>Fast path:</strong> common write operations (note writes, file writes) use a deterministic fast-path that emits exactly one <code>files.write_text</code> step — no cloud planning required.</p>
@@ -178,7 +178,7 @@
     <div class="container">
       <div>
         <strong>VoxeraOS</strong>
-        <p>v0.1.7 · Governed AI Execution Runtime</p>
+        <p>v0.1.7 Early Alpha · Invite Only · Open Source Soon</p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
