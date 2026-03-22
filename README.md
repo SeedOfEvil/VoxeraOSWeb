@@ -1,6 +1,8 @@
-# Voxera OS Alpha v0.1.4 Website
+# VoxeraOS Website · v0.1.8
 
-Static multi-page marketing/docs website for Voxera OS Alpha v0.1.4.
+Static multi-page website for [VoxeraOS](https://github.com/SeedOfEvil/VoxeraOS) — an open-source governed AI execution runtime.
+
+Hosted at [voxeraos.ca](https://voxeraos.ca).
 
 ## Run locally
 

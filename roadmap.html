@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="VoxeraOS Roadmap — v0.1.7 ships governed queue execution, approval gates, artifact-backed outcomes, and baseline recovery. Next: richer Recovery Inspector UI." />
+  <meta name="description" content="VoxeraOS Roadmap — v0.1.8 open-source alpha with governed queue execution, approval gates, artifact-backed outcomes, and baseline recovery. Broad direction for what's next." />
   <title>VoxeraOS — Roadmap</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
         <a href="docs.html">Operator Guide</a>
         <a href="roadmap.html">Roadmap</a>
       </nav>
-      <a class="btn-nav-cta" href="index.html#waitlist">Request Invite</a>
+      <a class="btn-nav-cta" href="https://github.com/SeedOfEvil/VoxeraOS">Get on GitHub</a>
     </div>
   </header>
 
@@ -39,117 +39,51 @@
     <section class="page-hero reveal">
       <p class="eyebrow">Roadmap</p>
       <h1>Where VoxeraOS is headed</h1>
-      <p class="lede">Stability before scale. Operator trust before expanding capabilities. VoxeraOS is early alpha — a one-person project growing into a product. Here's what's built, what's next, and where we're going.</p>
+      <p class="lede">Stability before scale. Operator trust before expanding capabilities. VoxeraOS is an open-source alpha — a one-person evenings/weekends project. Here's what's built and the broad direction for where things are going. Details will evolve.</p>
     </section>
 
-    <!-- ─── Shipped: v0.1.7 ─────────────────────────────────────────── -->
+    <!-- ─── Current: v0.1.8 ─────────────────────────────────────────── -->
     <section class="section reveal">
       <div class="section-head">
-        <p class="eyebrow">Current alpha</p>
-        <h2>Built in v0.1.7</h2>
+        <p class="eyebrow">Current release</p>
+        <h2>v0.1.8 — Open-source alpha</h2>
       </div>
       <div class="roadmap-grid stagger-children">
         <article class="roadmap-card rm-shipped reveal">
           <span class="rm-badge shipped">Built</span>
           <h2>Governed queue execution</h2>
-          <ul>
-            <li>Durable filesystem-backed queue with explicit job lifecycle (inbox → pending → running → done)</li>
-            <li>Approval gates that pause execution — jobs wait until operator explicitly allows them</li>
-            <li>Artifact-backed outcomes — every job produces evidence of what requested, allowed, executed, and resulted</li>
-          </ul>
+          <p>Durable filesystem-backed queue with explicit job lifecycle, approval gates that pause execution, and artifact-backed outcomes for every job.</p>
         </article>
         <article class="roadmap-card rm-shipped reveal">
           <span class="rm-badge shipped">Built</span>
-          <h2>Security, visibility, and baseline recovery</h2>
-          <ul>
-            <li>Input guardrails, prompt boundaries, and rate-limited panel access protection</li>
-            <li>Operator panel: health at a glance, hygiene tools, last run results</li>
-            <li>Baseline recovery directories, quarantine buckets, and incident bundles operational</li>
-          </ul>
+          <h2>Operator visibility and recovery</h2>
+          <p>Operator panel with health-at-a-glance, hygiene tools, baseline recovery directories, quarantine buckets, and incident bundles.</p>
         </article>
-        <article class="roadmap-card rm-shipped full-width reveal">
+        <article class="roadmap-card rm-shipped reveal">
           <span class="rm-badge shipped">Built</span>
-          <h2>Vera / VoxeraOS separation and reliability</h2>
-          <ul>
-            <li>Clear separation between Vera (conversational surface) and VoxeraOS (governed execution runtime)</li>
-            <li>Smoother, more predictable approval flow — reduced friction, no dead-ends</li>
-            <li>Deterministic prompt ordering, brain fallback classification, and consistent input handling</li>
-          </ul>
+          <h2>Vera v1 — conversational surface</h2>
+          <p>Clear Vera / VoxeraOS separation, deterministic prompt ordering, brain fallback classification, and the most stable Vera so far.</p>
         </article>
       </div>
     </section>
 
-    <!-- ─── Next up ─────────────────────────────────────────────────── -->
+    <!-- ─── Broad direction ─────────────────────────────────────────── -->
     <section class="section reveal">
       <div class="section-head">
-        <p class="eyebrow">Immediate next milestone</p>
-        <h2>Next up: Recovery Inspector UI</h2>
-      </div>
-      <div class="roadmap-grid">
-        <article class="roadmap-card rm-next full-width reveal">
-          <span class="rm-badge next">Next up</span>
-          <h2>Richer recovery and quarantine inspection</h2>
-          <ul>
-            <li>Baseline recovery directories, quarantine buckets, and incident bundles are already in v0.1.7</li>
-            <li>Next milestone: dedicated panel view for inspecting recovery sessions and quarantined items visually</li>
-            <li>Download incident bundles directly from the panel — richer triage and visualization tooling</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─── Coming after ────────────────────────────────────────────── -->
-    <section class="section reveal">
-      <div class="section-head">
-        <p class="eyebrow">Near-term</p>
-        <h2>Coming after: Long-run resilience</h2>
+        <p class="eyebrow">Broad direction</p>
+        <h2>Where things are headed</h2>
+        <p style="color:var(--text-sec);margin-top:.5rem;max-width:52ch">These are directional themes, not detailed delivery commitments. Specifics will be shaped by what the project learns along the way. This is a one-person evenings/weekends project — pace and priorities will shift.</p>
       </div>
       <div class="roadmap-grid stagger-children">
-        <article class="roadmap-card rm-coming reveal">
-          <span class="rm-badge coming">Coming</span>
-          <h2>Degradation awareness</h2>
-          <ul>
-            <li>Runtime becomes self-aware of sustained failures</li>
-            <li>Surfaces degradation state clearly to operators</li>
-            <li>No silent degradation — you always know the system's true state</li>
-          </ul>
-        </article>
-        <article class="roadmap-card rm-coming reveal">
-          <span class="rm-badge coming">Coming</span>
-          <h2>Intelligent backoff</h2>
-          <ul>
-            <li>Automatic backoff when providers are failing or rate-limiting</li>
-            <li>Clear shutdown and exit context in health surfaces</li>
-            <li>Graceful handling of extended provider outages</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─── Future ──────────────────────────────────────────────────── -->
-    <section class="section reveal">
-      <div class="section-head">
-        <p class="eyebrow">Future · post v0.1.7</p>
-        <h2>On the horizon</h2>
-      </div>
-      <div class="roadmap-grid stagger-children">
-        <article class="roadmap-card rm-future reveal">
-          <span class="rm-badge future">Future</span>
-          <h2>Platform expansion</h2>
-          <ul>
-            <li>Provider profiles and advanced configuration</li>
-            <li>Skills validation and broader capability coverage</li>
-            <li>Advanced rate limiting and usage controls</li>
-          </ul>
+        <article class="roadmap-card rm-next reveal">
+          <span class="rm-badge next">Next themes</span>
+          <h2>Hardening and resilience</h2>
+          <p>Richer recovery inspection, degradation-aware runtime, intelligent backoff, and broader operator tooling.</p>
         </article>
         <article class="roadmap-card rm-future reveal">
-          <span class="rm-badge future">Future</span>
-          <h2>Voice and marketplace</h2>
-          <ul>
-            <li>Voice loop expansion — "Hey Voxera" wake word</li>
-            <li>Signed skills marketplace for community contributions</li>
-            <li>Release and packaging improvements</li>
-          </ul>
+          <span class="rm-badge future">On the horizon</span>
+          <h2>Voice-first and AI-first</h2>
+          <p>Voice loop, signed skills, platform expansion, and packaging improvements. Long-term direction — many things will change.</p>
         </article>
       </div>
     </section>
@@ -160,7 +94,7 @@
         <div>
           <p class="eyebrow">Our philosophy</p>
           <h2>Grounded in what AI is missing today</h2>
-          <p style="color:var(--text-sec);margin-top:.4rem">This project is grounded in present-day gaps in AI systems: trust, review, execution boundaries, and proof of outcome. The alpha establishes the control structure — governed execution, approval gating, audit records, and safe defaults — before expanding capabilities. Open-source public release is coming soon.</p>
+          <p style="color:var(--text-sec);margin-top:.4rem">This project is grounded in present-day gaps in AI systems: trust, review, execution boundaries, and proof of outcome. The alpha establishes the control structure — governed execution, approval gating, audit records, and safe defaults — before expanding capabilities. VoxeraOS is open source now.</p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-primary" href="features.html">What's built today</a>
@@ -175,7 +109,7 @@
     <div class="container">
       <div>
         <strong>VoxeraOS</strong>
-        <p>v0.1.7 Early Alpha · Invite Only · Open Source Soon</p>
+        <p>v0.1.8 Open-Source Alpha · <a href="https://github.com/SeedOfEvil/VoxeraOS" style="color:inherit;text-decoration:underline">GitHub</a></p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>

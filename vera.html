@@ -30,7 +30,7 @@
         <a href="docs.html">Operator Guide</a>
         <a href="roadmap.html">Roadmap</a>
       </nav>
-      <a class="btn-nav-cta" href="index.html#waitlist">Request Invite</a>
+      <a class="btn-nav-cta" href="https://github.com/SeedOfEvil/VoxeraOS">Get on GitHub</a>
     </div>
   </header>
 
@@ -121,13 +121,13 @@
     <!-- ─── What Vera will become ─────────────────────────────────────── -->
     <section class="section reveal">
       <div class="section-head">
-        <p class="eyebrow">Planned</p>
-        <h2>What Vera will become</h2>
+        <p class="eyebrow">Broad direction</p>
+        <h2>Where Vera is headed</h2>
       </div>
       <div class="grid three stagger-children">
         <article class="card reveal">
           <h3>Voice loop</h3>
-          <p>Respond to "Hey Voxera" and handle voice-first commands through the same approval-gated queue. STT/TTS integration planned for v0.3.</p>
+          <p>Respond to "Hey Voxera" and handle voice-first commands through the same approval-gated queue. A future direction — details will evolve.</p>
         </article>
         <article class="card reveal">
           <h3>Richer mission planning</h3>
@@ -148,7 +148,7 @@
         <details class="eng-details">
           <summary>Engineering details — brain architecture</summary>
           <div class="eng-body">
-            <p><strong>Brain tier system:</strong> primary, fast, reasoning, fallback — each independently configurable per provider. OpenRouter is the finalized provider path today. Other provider integrations exist in the codebase but are not yet the settled public story.</p>
+            <p><strong>Brain tier system:</strong> primary, fast, reasoning, fallback — each independently configurable per provider. OpenRouter is the only officially tested and fully built provider path so far. Gemini 3 Flash is the current minimum supported requirement. Other OpenRouter brains can be tried experimentally.</p>
             <p style="margin-top:.6rem"><strong>Fallback classification:</strong> when a provider fails, the failure reason is classified into one of: <code>TIMEOUT</code>, <code>AUTH</code>, <code>RATE_LIMIT</code>, <code>MALFORMED</code>, <code>NETWORK</code>, <code>UNKNOWN</code>. The reason persists in <code>health.json</code> and surfaces in <code>voxera queue health</code>.</p>
             <p style="margin-top:.6rem"><strong>Prompt ordering:</strong> Vera's planning loop uses a fixed prompt structure. The system prompt, capability snapshot, and job context are composed in deterministic order. No runtime improvisation on the system prompt.</p>
             <p style="margin-top:.6rem"><strong>Fast path:</strong> common write operations (note writes, file writes) use a deterministic fast-path that emits exactly one <code>files.write_text</code> step — no cloud planning required.</p>
@@ -178,7 +178,7 @@
     <div class="container">
       <div>
         <strong>VoxeraOS</strong>
-        <p>v0.1.7 Early Alpha · Invite Only · Open Source Soon</p>
+        <p>v0.1.8 Open-Source Alpha · <a href="https://github.com/SeedOfEvil/VoxeraOS" style="color:inherit;text-decoration:underline">GitHub</a></p>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
