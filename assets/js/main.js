@@ -72,32 +72,7 @@
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
   }
 
-  /* ── Waitlist form ────────────────────────────────────────────────── */
-  const form   = document.getElementById('waitlist-form');
-  const submit = document.getElementById('waitlist-submit');
-  const email  = document.getElementById('waitlist-email');
-
-  if (form && submit && email) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const emailVal = email.value;
-
-      try {
-        await fetch('https://formsubmit.co/ajax/Seed_Evil@hotmail.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email: emailVal }),
-        });
-      } catch (_) { /* silently continue — show success regardless */ }
-
-      submit.textContent = "You're on the list";
-      submit.disabled = true;
-      email.disabled  = true;
-      submit.style.background   = '#1a7f45';
-      submit.style.boxShadow    = '0 4px 16px rgba(26,127,69,.3)';
-      submit.style.borderColor  = 'transparent';
-    });
-  }
+  /* ── (Waitlist form removed — project is now open source) ─────────── */
 
   /* ── Ambient canvas (very subtle on light pages) ──────────────────── */
   const canvas = document.getElementById('bg-canvas');

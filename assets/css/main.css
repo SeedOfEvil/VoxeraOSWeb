@@ -1192,6 +1192,47 @@ details.eng-details summary:hover { color: var(--text-sec); background: rgba(0,0
   .workflow-step       { padding: .6rem .8rem; }
 }
 
+/* ─── Showcase / Product Screenshots ──────────────────────────────── */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.showcase-panel {
+  margin: 0;
+}
+.showcase-frame {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-dark);
+  position: relative;
+}
+.showcase-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+/* Vera: conversational interface with starter prompts */
+.showcase-img-vera {
+  object-position: top center;
+}
+/* Panel: queue summary, health, and approval command center */
+.showcase-img-panel {
+  object-position: top center;
+}
+.showcase-caption {
+  margin-top: .75rem;
+  font-size: .82rem;
+  color: var(--text-ter);
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+
 @media (max-width: 720px) {
   .nav-toggle   { display: inline-flex; }
   .btn-nav-cta  { display: none; }
@@ -1224,4 +1265,5 @@ details.eng-details summary:hover { color: var(--text-sec); background: rgba(0,0
   .chip { font-size: .8rem; padding: .45rem .85rem; }
   .workflow { flex-direction: column; align-items: center; }
   .workflow-arrow { display: block; transform: rotate(90deg); padding-bottom: 0; margin: -.2rem 0; }
+  .showcase-grid { grid-template-columns: 1fr; }
 }
