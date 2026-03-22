@@ -77,16 +77,22 @@
         <div class="qs-step reveal">
           <div class="step-num">1</div>
           <div class="qs-step-body">
-            <h3>Set up environment + install</h3>
+            <h3>Clone and set up</h3>
             <div class="code-block">
-              <pre><code>python3 -m venv .venv &amp;&amp; source .venv/bin/activate
+              <pre><code>cd ~
+git clone https://github.com/SeedOfEvil/VoxeraOS.git
+cd ~/VoxeraOS
+python3 -m venv .venv &amp;&amp; source .venv/bin/activate
 pip install -U pip
 pip install -e ".[dev]"</code></pre>
-              <button class="copy-btn" data-copy="python3 -m venv .venv && source .venv/bin/activate
+              <button class="copy-btn" data-copy="cd ~
+git clone https://github.com/SeedOfEvil/VoxeraOS.git
+cd ~/VoxeraOS
+python3 -m venv .venv && source .venv/bin/activate
 pip install -U pip
 pip install -e &quot;.[dev]&quot;">Copy</button>
             </div>
-            <p>Requires Python ≥ 3.10. Run inside the VoxeraOS project directory.</p>
+            <p>Requires Python ≥ 3.10 and Git. Clones VoxeraOS to your home directory and installs in a virtual environment.</p>
           </div>
         </div>
         <div class="qs-step reveal">
