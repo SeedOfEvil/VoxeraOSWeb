@@ -71,7 +71,7 @@
       </div>
       <div class="showcase-grid reveal delay-1">
         <figure class="showcase-panel">
-          <div class="showcase-frame">
+          <button class="showcase-frame showcase-zoom-btn" type="button" aria-label="View full-size screenshot of Vera interface" data-lightbox-src="assets/images/vera-interface.png" data-lightbox-alt="Vera interface showing conversational AI preparing actions with starter prompts for asking, investigating, saving, and writing">
             <img
               src="assets/images/vera-interface.png"
               alt="Vera interface showing conversational AI preparing actions with starter prompts for asking, investigating, saving, and writing"
@@ -80,11 +80,11 @@
               width="992"
               height="700"
             />
-          </div>
+          </button>
           <figcaption class="showcase-caption">Vera — conversational layer</figcaption>
         </figure>
         <figure class="showcase-panel">
-          <div class="showcase-frame">
+          <button class="showcase-frame showcase-zoom-btn" type="button" aria-label="View full-size screenshot of VoxeraOS control panel" data-lightbox-src="assets/images/voxeraos-queue-panel.png" data-lightbox-alt="VoxeraOS control panel showing queue summary, approval command center, and execution state">
             <img
               src="assets/images/voxeraos-queue-panel.png"
               alt="VoxeraOS control panel showing queue summary, approval command center, and execution state"
@@ -93,7 +93,7 @@
               width="1320"
               height="780"
             />
-          </div>
+          </button>
           <figcaption class="showcase-caption">VoxeraOS — execution + approvals</figcaption>
         </figure>
       </div>
@@ -377,6 +377,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox overlay for screenshot zoom -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot detail view" hidden>
+    <button class="lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+  </div>
 
   <script src="assets/js/main.js" defer></script>
 </body>
