@@ -1198,6 +1198,9 @@ details.eng-details summary:hover { color: var(--text-sec); background: rgba(0,0
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-top: 2.5rem;
+  max-width: 65%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .showcase-panel {
   margin: 0;
@@ -1265,5 +1268,5 @@ details.eng-details summary:hover { color: var(--text-sec); background: rgba(0,0
   .chip { font-size: .8rem; padding: .45rem .85rem; }
   .workflow { flex-direction: column; align-items: center; }
   .workflow-arrow { display: block; transform: rotate(90deg); padding-bottom: 0; margin: -.2rem 0; }
-  .showcase-grid { grid-template-columns: 1fr; }
+  .showcase-grid { grid-template-columns: 1fr; max-width: 100%; }
 }
