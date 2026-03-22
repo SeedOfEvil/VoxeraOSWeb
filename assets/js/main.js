@@ -74,6 +74,49 @@
 
   /* ── (Waitlist form removed — project is now open source) ─────────── */
 
+  /* ── Screenshot lightbox ────────────────────────────────────────── */
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  if (lightbox && lightboxImg) {
+    const openLightbox = (src, alt) => {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.removeAttribute('hidden');
+      // Force reflow so transition plays
+      void lightbox.offsetHeight;
+      lightbox.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-active');
+      document.body.style.overflow = '';
+      lightbox.addEventListener('transitionend', () => {
+        if (!lightbox.classList.contains('is-active')) {
+          lightbox.setAttribute('hidden', '');
+          lightboxImg.src = '';
+        }
+      }, { once: true });
+    };
+
+    document.querySelectorAll('.showcase-zoom-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const src = btn.getAttribute('data-lightbox-src');
+        const alt = btn.getAttribute('data-lightbox-alt') || '';
+        if (src) openLightbox(src, alt);
+      });
+    });
+
+    lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-active')) closeLightbox();
+    });
+  }
+
   /* ── Ambient canvas (very subtle on light pages) ──────────────────── */
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
