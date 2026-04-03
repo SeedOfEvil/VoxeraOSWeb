@@ -1,4 +1,4 @@
-# VoxeraOS Website · v0.1.8
+# VoxeraOS Website · v0.1.9
 
 Static multi-page website for [VoxeraOS](https://github.com/SeedOfEvil/VoxeraOS) — an open-source governed AI execution runtime.
 
